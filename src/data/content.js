@@ -1,7 +1,7 @@
 export const profile = {
   name: "Yogesh Modi",
   fullName: "Yogesh Shivkumar Modi",
-  role: "Agentic Systems Engineer",
+  role: "Agentic Systems Architect & Engineer",
   tagline: "Turning ambiguous problems into systems that ship.",
   subRole: "Senior Software Engineer, AI/ML — Mindfire Solutions",
   location: "Ahmedabad, Gujarat, India",
@@ -20,7 +20,7 @@ export const heroMeta = [
   { label: "Based in", value: "Ahmedabad, IN" },
   { label: "Experience", value: "3+ years, production" },
   { label: "Focus", value: "Multi-agent systems · RAG · LLM infra" },
-  { label: "Status", value: "Open to new roles" },
+  { label: "Status", value: "Open to roles & client work" },
 ];
 
 export const about = {
@@ -101,20 +101,52 @@ export const practices = {
 
 export const experience = [
   {
-    period: "Current",
+    period: "May 2025 – Present",
     role: "Senior Software Engineer, AI/ML",
     org: "Mindfire Solutions",
     summary:
-      "Own multi-agent and RAG systems end-to-end for enterprise clients — architecture, implementation, evaluation and deployment. Core stack: LangGraph, A2A protocol, FastAPI, Docker, Qdrant/FAISS/Pinecone/Weaviate.",
-    tags: ["LangGraph", "A2A Protocol", "RAG", "FastAPI", "Docker"],
+      "Technical lead on a production multi-agent platform for an enterprise client — owning system design, QA and rollout, plus timelines and stakeholder communication end-to-end. Architected multi-agent orchestration on the A2A protocol, engineered an async distributed backend (modular monolith + microservices) for concurrent agent execution, and instrumented the full agent graph with LangSmith tracing. Cut deployment time 80% with Docker/supervisord.",
+    tags: ["A2A Protocol", "LangGraph", "LangSmith", "FastAPI", "Docker"],
   },
   {
-    period: "Ongoing",
-    role: "Independent / Applied ML Projects",
-    org: "Self-directed",
+    period: "Jan 2025 – Mar 2025",
+    role: "Machine Learning Engineer",
+    org: "Cimcon Infotech Pvt Ltd",
     summary:
-      "A running set of production-style builds spanning agentic commerce, document intelligence, recommendation systems and generative fine-tuning — see Case Studies.",
-    tags: ["LLaMA / LoRA", "XGBoost", "RecBole", "MMAction2"],
+      "Trained and optimized ML models on financial data, improving an internal Python package for sequential data processing. Built automated preprocessing pipelines and FastAPI model-serving applications, deployed via Docker and validated with Streamlit.",
+    tags: ["Python", "FastAPI", "Docker", "Streamlit"],
+  },
+  {
+    period: "Feb 2023 – Dec 2024",
+    role: "AI Engineer",
+    org: "Sunbots Innovations LLP",
+    summary:
+      "Took computer-vision products from prototype to production. On SMARTON, lifted currency-detection accuracy 55%→79% and document detection 80%→94%, plus shipped a LangChain/RAG document-QA app. On a theft-detection system, moved LSTM to pretrained MMAction2 models to raise activity-detection accuracy 30%→65%, deploying alerts via FastAPI on Jetson Nano.",
+    tags: ["Computer Vision", "Ultralytics", "MMAction2", "TFLite", "Docker"],
+  },
+  {
+    period: "Oct 2022 – Feb 2023",
+    role: "Data Science Intern",
+    org: "Zummit Infolabs",
+    summary:
+      "Completed intensive training in supervised/unsupervised ML, preprocessing and feature engineering, then applied Python, NumPy, Pandas and Scikit-learn to real-world datasets using reproducible, Git-based workflows.",
+    tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+  },
+];
+
+export const education = {
+  degree: "B.Tech, Information Technology",
+  school: "Silver Oak University (GTU)",
+  period: "2019 – 2023",
+  detail: "CGPA 7.95 / 10",
+};
+
+export const certifications = [
+  {
+    name: "Machine Learning Specialization",
+    org: "DeepLearning.AI / Coursera",
+    detail:
+      "Supervised ML, Advanced Learning Algorithms, Unsupervised Learning, Recommenders & Reinforcement Learning",
   },
 ];
 

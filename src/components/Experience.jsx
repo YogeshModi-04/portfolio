@@ -1,4 +1,4 @@
-import { experience } from "../data/content";
+import { experience, education, certifications } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
 
 export default function Experience() {
@@ -13,7 +13,7 @@ export default function Experience() {
 
         <div className="timeline">
           {experience.map((e) => (
-            <div className="timeline-row" key={e.role} data-reveal>
+            <div className="timeline-row" key={`${e.role}-${e.org}`} data-reveal>
               <span className="timeline-period">{e.period}</span>
               <div className="timeline-body">
                 <h3 className="timeline-role">{e.role}</h3>
@@ -29,6 +29,27 @@ export default function Experience() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="credentials" data-reveal>
+          <div className="credentials-col">
+            <span className="credentials-label">Education</span>
+            <p className="credentials-main">{education.degree}</p>
+            <p className="credentials-sub">
+              {education.school} · {education.period} · {education.detail}
+            </p>
+          </div>
+          <div className="credentials-col">
+            <span className="credentials-label">Certifications</span>
+            {certifications.map((c) => (
+              <div key={c.name}>
+                <p className="credentials-main">{c.name}</p>
+                <p className="credentials-sub">
+                  {c.org} — {c.detail}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -81,6 +102,45 @@ export default function Experience() {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
+        }
+
+        .credentials {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: clamp(1.5rem, 4vw, 3rem);
+          padding-top: clamp(1.75rem, 4vw, 2.5rem);
+        }
+
+        @media (max-width: 640px) {
+          .credentials {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+        }
+
+        .credentials-col {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+
+        .credentials-label {
+          font-size: 0.72rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--fg-faint);
+          margin-bottom: 0.25rem;
+        }
+
+        .credentials-main {
+          font-size: 0.95rem;
+          font-weight: 600;
+        }
+
+        .credentials-sub {
+          font-size: 0.85rem;
+          color: var(--fg-faint);
+          line-height: 1.5;
         }
       `}</style>
     </section>

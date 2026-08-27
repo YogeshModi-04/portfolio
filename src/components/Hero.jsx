@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="wrap hero-inner">
         <div className="hero-grid">
           <div className="hero-text">
-            <p className="eyebrow hero-eyebrow">AI / ML Engineering</p>
+            <p className="eyebrow hero-eyebrow">Architecture · AI/ML Engineering · Delivery</p>
 
             <h1 className="hero-name">Yogesh Modi</h1>
 
