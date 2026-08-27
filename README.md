@@ -7,30 +7,35 @@ component.
 
 ## Before you publish, please review
 
-I built this from career details on file rather than an uploaded resume, so a
-few things are best-guesses — check these in `src/data/content.js` before it
-goes live:
-
-- **No LinkedIn/phone number** — only email and GitHub are on the contact section
-  and in `profile` (I had no confirmed LinkedIn URL or phone to include). Add them
-  in `src/data/content.js` (`profile` object) and `Contact.jsx` if you want them shown.
-- **Headshot photo** — the hero currently shows an "YM" initials placeholder
-  (you said you'd add a real photo later). To swap it in: drop an image file
-  into `public/` (e.g. `public/headshot.jpg`), then set `profile.photoUrl` in
-  `src/data/content.js` to its path (e.g. `"/headshot.jpg"`) and rebuild. A
-  roughly square image, at least 400×400px, works best.
+- **Headshot photo** — in place. Lives at `src/assets/headshot.jpg` and is
+  imported in `src/data/content.js` (`profile.photoUrl`) rather than dropped
+  in `public/` — this project builds to a single self-contained HTML file
+  (`vite-plugin-singlefile`), so images need to go through Vite's asset
+  pipeline as a JS import to get base64-inlined into that one file. To swap
+  the photo later, replace `src/assets/headshot.jpg` with a new image (same
+  filename, roughly square works best) or update the import path in
+  `content.js`.
+- **Track record** — `experience` in `content.js` now lists all four real
+  roles (Zummit Infolabs → Sunbots Innovations → Cimcon Infotech → Mindfire
+  Solutions) with quantified metrics pulled from the resume on file
+  (`Yogesh_Modi_resume.pdf`, one level up from this folder). The Mindfire
+  entry intentionally keeps the client anonymized as "an enterprise client"
+  rather than naming them — confirm there's no NDA issue before naming them
+  publicly if you change that later.
+- **Education & Certifications** — added as a compact block under the Track
+  record timeline (`education` / `certifications` in `content.js`,
+  rendered by `Experience.jsx`).
+- **No LinkedIn/phone number** — only email and GitHub are on the contact
+  section and in `profile`. Your resume on file has both (LinkedIn: "Yogesh
+  Shivkumar Modi", phone: +91 8141761889) if you want them added — just
+  wasn't asked for yet.
 - **Project list** — pulled from recent work notes plus the two products you
   named (SMARTON smart glasses, XWCare). Swap in whichever case studies you'd
-  rather lead with, and add real repo links if public.
-- **SMARTON project description** — I described your involvement generically
-  ("contributed AI/ML engineering") since I didn't have specifics on your exact
-  role/scope on that product. Tighten this up in `projects` in `content.js`.
-- **"Education"** — no section included; I had no confirmed degree/institution
-  details. Add an `education` array to `content.js` and a matching component
-  if you want one.
-- **Certifications section removed** per your request — the data and component
-  are gone, not just hidden. If you want a slimmed-down version back later, it's
-  in the version history of this project.
+  rather lead with, and add real repo links if public. The SMARTON entry in
+  `projects` still describes your role generically ("contributed AI/ML
+  engineering") — the quantified accuracy numbers for that work now live in
+  the Track record timeline instead, but feel free to tighten the project
+  card copy too.
 
 ## Affiliated products
 
@@ -111,6 +116,7 @@ Every future `git push` redeploys automatically — no manual upload step.
 api/contact.js           ← Vercel serverless function for the contact form
 src/
   data/content.js        ← all copy/content — edit this first
+  assets/headshot.jpg    ← hero photo, imported (not in public/) so it inlines into the single-file build
   components/            ← Hero, About, Practices, Experience, Projects, Affiliates, Skills, FAQ, Contact
   hooks/useReveal.js      ← scroll-reveal animation hook
   index.css               ← design tokens (colors, type, spacing) + global styles
