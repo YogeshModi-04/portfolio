@@ -1,3 +1,5 @@
+import headshot from "../assets/headshot.jpg";
+
 export const profile = {
   name: "Yogesh Modi",
   fullName: "Yogesh Shivkumar Modi",
@@ -11,9 +13,7 @@ export const profile = {
   githubHandle: "YogeshModi-04",
   status: "Open to Agentic Systems / FDE roles",
   initials: "YM",
-  // Drop a photo file in /public (e.g. public/headshot.jpg) and set the path
-  // here (e.g. "/headshot.jpg") to replace the initials placeholder in the hero.
-  photoUrl: "",
+  photoUrl: headshot,
 };
 
 export const heroMeta = [
