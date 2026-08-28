@@ -18,7 +18,13 @@ export default function Experience() {
               <div className="timeline-body">
                 <h3 className="timeline-role">{e.role}</h3>
                 <p className="timeline-org">{e.org}</p>
-                <p className="timeline-summary">{e.summary}</p>
+                <ul className="timeline-bullets">
+                  {e.bullets.map((b) => (
+                    <li key={b.lead}>
+                      <strong>{b.lead}:</strong> {b.detail}
+                    </li>
+                  ))}
+                </ul>
                 <div className="timeline-tags">
                   {e.tags.map((t) => (
                     <span className="tag" key={t}>
@@ -34,18 +40,23 @@ export default function Experience() {
         <div className="credentials" data-reveal>
           <div className="credentials-col">
             <span className="credentials-label">Education</span>
-            <p className="credentials-main">{education.degree}</p>
-            <p className="credentials-sub">
-              {education.school} · {education.period} · {education.detail}
-            </p>
+            <div className="credential-item">
+              <p className="credentials-main">{education.degree}</p>
+              <p className="credentials-sub">
+                {education.school} · {education.period} · {education.detail}
+              </p>
+            </div>
           </div>
           <div className="credentials-col">
             <span className="credentials-label">Certifications</span>
             {certifications.map((c) => (
-              <div key={c.name}>
+              <div className="credential-item" key={c.credentialId}>
                 <p className="credentials-main">{c.name}</p>
                 <p className="credentials-sub">
-                  {c.org} — {c.detail}
+                  {c.org} · Issued {c.issued} ·{" "}
+                  <a className="credential-link" href={c.url} target="_blank" rel="noreferrer">
+                    Verify
+                  </a>
                 </p>
               </div>
             ))}
@@ -90,12 +101,25 @@ export default function Experience() {
           margin-bottom: 1rem;
         }
 
-        .timeline-summary {
+        .timeline-bullets {
+          list-style: none;
+          margin: 0 0 1.25rem;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.65rem;
+          max-width: 68ch;
+        }
+
+        .timeline-bullets li {
           color: var(--fg-soft);
-          font-size: 0.96rem;
-          line-height: 1.65;
-          max-width: 62ch;
-          margin-bottom: 1.25rem;
+          font-size: 0.94rem;
+          line-height: 1.6;
+        }
+
+        .timeline-bullets strong {
+          color: var(--fg);
+          font-weight: 600;
         }
 
         .timeline-tags {
@@ -121,7 +145,7 @@ export default function Experience() {
         .credentials-col {
           display: flex;
           flex-direction: column;
-          gap: 0.35rem;
+          gap: 0.9rem;
         }
 
         .credentials-label {
@@ -129,7 +153,12 @@ export default function Experience() {
           letter-spacing: 0.06em;
           text-transform: uppercase;
           color: var(--fg-faint);
-          margin-bottom: 0.25rem;
+        }
+
+        .credential-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
         }
 
         .credentials-main {
@@ -141,6 +170,17 @@ export default function Experience() {
           font-size: 0.85rem;
           color: var(--fg-faint);
           line-height: 1.5;
+        }
+
+        .credential-link {
+          color: var(--fg-faint);
+          text-decoration: none;
+          border-bottom: 1px solid var(--border-soft);
+        }
+
+        .credential-link:hover {
+          color: var(--fg-soft);
+          border-color: var(--fg-faint);
         }
       `}</style>
     </section>

@@ -3,7 +3,7 @@ import headshot from "../assets/headshot.jpg";
 export const profile = {
   name: "Yogesh Modi",
   fullName: "Yogesh Shivkumar Modi",
-  role: "Agentic Systems Architect & Engineer",
+  role: "AI/ML Systems Architect & Engineer",
   tagline: "Turning ambiguous problems into systems that ship.",
   subRole: "Senior Software Engineer, AI/ML — Mindfire Solutions",
   location: "Ahmedabad, Gujarat, India",
@@ -11,7 +11,7 @@ export const profile = {
   email: "skmodiyogesh@gmail.com",
   github: "https://github.com/YogeshModi-04",
   githubHandle: "YogeshModi-04",
-  status: "Open to Agentic Systems / FDE roles",
+  linkedin: "https://www.linkedin.com/in/yogesh-shivkumar-modi/",
   initials: "YM",
   photoUrl: headshot,
 };
@@ -19,13 +19,12 @@ export const profile = {
 export const heroMeta = [
   { label: "Based in", value: "Ahmedabad, IN" },
   { label: "Experience", value: "3+ years, production" },
-  { label: "Focus", value: "Multi-agent systems · RAG · LLM infra" },
-  { label: "Status", value: "Open to roles & client work" },
+  { label: "Focus", value: "Architect · Build · Scale · Deliver" },
 ];
 
 export const about = {
   statement:
-    "I build agentic systems that ship — not demos. Three years of production experience taking multi-agent platforms from architecture through QA to enterprise deployment.",
+    "I architect, build, scale and deliver AI/ML systems that ship — not demos. Three years of production experience spanning agentic and generative AI, computer vision and applied ML, taken from architecture through QA to enterprise deployment.",
   bio:
     "I'm a Senior Software Engineer at Mindfire Solutions, working at the intersection of multi-agent orchestration, retrieval-augmented generation, and applied NLP/CV. My day-to-day spans LangGraph and the A2A protocol for agent coordination, RAG pipelines across Qdrant, FAISS, Pinecone and Weaviate, and fine-tuning work on BERT, LLaMA and GPT-2 with LoRA/PEFT — usually against real infrastructure constraints like GPU memory limits and CPU-only OCR requirements, not clean notebooks. I've deployed and run this kind of work on both GCP and AWS, so cloud choice is a project decision, not a dependency.",
   facts: [
@@ -104,32 +103,92 @@ export const experience = [
     period: "May 2025 – Present",
     role: "Senior Software Engineer, AI/ML",
     org: "Mindfire Solutions",
-    summary:
-      "Technical lead on a production multi-agent platform for an enterprise client — owning system design, QA and rollout, plus timelines and stakeholder communication end-to-end. Architected multi-agent orchestration on the A2A protocol, engineered an async distributed backend (modular monolith + microservices) for concurrent agent execution, and instrumented the full agent graph with LangSmith tracing. Cut deployment time 80% with Docker/supervisord.",
+    bullets: [
+      {
+        lead: "Technical Leadership",
+        detail:
+          "Led the full project lifecycle as technical lead — problem discovery, system design, QA, production rollout and client-facing demos — owning timelines, stakeholder communication and cross-functional delivery.",
+      },
+      {
+        lead: "Agentic Architecture",
+        detail:
+          "Architected a production multi-agent, generative-AI platform spanning autonomous workflows, task planning, tool integration and LLM-driven decision systems, on a distributed async backend (modular monolith + microservices, asyncio) built for concurrent, non-blocking, high-throughput agent execution.",
+      },
+      {
+        lead: "Scale",
+        detail:
+          "Orchestrated 5+ specialized agents — sales analytics, documentation Q&A, product catalog search, vendor performance — with RAG pipelines on Qdrant covering 46+ business APIs and 10,000+ product specifications.",
+      },
+      {
+        lead: "Observability & Prompting",
+        detail:
+          "Instrumented the agent graph with admin-gated LangSmith tracing to monitor execution flow, debug routing decisions and evaluate output quality, and optimized prompt strategies to raise LLM query-routing accuracy and response quality.",
+      },
+      {
+        lead: "Security & Auditability",
+        detail:
+          "Implemented role-based authentication and permission management across the multi-agent backend, enforcing access restrictions and auditability of agent actions and data flows.",
+      },
+      {
+        lead: "Delivery Infrastructure",
+        detail:
+          "Built FastAPI/REST agent services and automation workflows, ran CI/CD with Dockerized deployments across AWS and GCP integrating Qdrant, FAISS, Pinecone and Weaviate, and shipped an Angular front-end — cutting deployment time 80% via supervisord orchestration.",
+      },
+    ],
     tags: ["A2A Protocol", "LangGraph", "LangSmith", "FastAPI", "Docker"],
   },
   {
     period: "Jan 2025 – Mar 2025",
     role: "Machine Learning Engineer",
     org: "Cimcon Infotech Pvt Ltd",
-    summary:
-      "Trained and optimized ML models on financial data, improving an internal Python package for sequential data processing. Built automated preprocessing pipelines and FastAPI model-serving applications, deployed via Docker and validated with Streamlit.",
+    bullets: [
+      {
+        lead: "Model Training",
+        detail:
+          "Trained and optimized ML models on financial data and improved an internal Python package for sequential data processing.",
+      },
+      {
+        lead: "Pipelines & Deployment",
+        detail:
+          "Built automated preprocessing pipelines and FastAPI model-serving applications, deployed via Docker and validated with Streamlit.",
+      },
+    ],
     tags: ["Python", "FastAPI", "Docker", "Streamlit"],
   },
   {
     period: "Feb 2023 – Dec 2024",
     role: "AI Engineer",
     org: "Sunbots Innovations LLP",
-    summary:
-      "Took computer-vision products from prototype to production. On SMARTON, lifted currency-detection accuracy 55%→79% and document detection 80%→94%, plus shipped a LangChain/RAG document-QA app. On a theft-detection system, moved LSTM to pretrained MMAction2 models to raise activity-detection accuracy 30%→65%, deploying alerts via FastAPI on Jetson Nano.",
+    bullets: [
+      {
+        lead: "Model Development",
+        detail:
+          "Took computer-vision models from prototype to production across product features and client projects; built automated image-labeling pipelines and data-filtering techniques that cut manual annotation effort and improved model performance.",
+      },
+      {
+        lead: "Deployment & Integration",
+        detail:
+          "Engineered data pipelines for Ultralytics and Super-Gradients model variants, partnered with Android teams on on-device ML deployment, and used Docker for scalable development.",
+      },
+      {
+        lead: "Flagship Builds",
+        detail:
+          "Shipped SMARTON (currency-detection accuracy 55%→79%, document detection 80%→94%, a LangChain/RAG document-QA app, quantized on-device models) and a theft-detection system (LSTM→pretrained MMAction2, activity-detection accuracy 30%→65%, FastAPI alerting on Jetson Nano via Docker).",
+      },
+    ],
     tags: ["Computer Vision", "Ultralytics", "MMAction2", "TFLite", "Docker"],
   },
   {
     period: "Oct 2022 – Feb 2023",
     role: "Data Science Intern",
     org: "Zummit Infolabs",
-    summary:
-      "Completed intensive training in supervised/unsupervised ML, preprocessing and feature engineering, then applied Python, NumPy, Pandas and Scikit-learn to real-world datasets using reproducible, Git-based workflows.",
+    bullets: [
+      {
+        lead: "Training & Implementation",
+        detail:
+          "Completed intensive ML and Data Science training (supervised/unsupervised learning, preprocessing, feature engineering, model evaluation) and applied Python, NumPy, Pandas and Scikit-learn to real-world datasets using Git-based, reproducible ML workflows.",
+      },
+    ],
     tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
   },
 ];
@@ -144,9 +203,31 @@ export const education = {
 export const certifications = [
   {
     name: "Machine Learning Specialization",
-    org: "DeepLearning.AI / Coursera",
-    detail:
-      "Supervised ML, Advanced Learning Algorithms, Unsupervised Learning, Recommenders & Reinforcement Learning",
+    org: "Coursera",
+    issued: "May 2023",
+    credentialId: "FAP4NXVVA4LR",
+    url: "https://www.coursera.org/account/accomplishments/specialization/certificate/FAP4NXVVA4LR",
+  },
+  {
+    name: "Unsupervised Learning, Recommenders, Reinforcement Learning",
+    org: "Coursera",
+    issued: "May 2023",
+    credentialId: "669GDLEED4WF",
+    url: "https://www.coursera.org/account/accomplishments/certificate/669GDLEED4WF",
+  },
+  {
+    name: "Advanced Learning Algorithms",
+    org: "Coursera",
+    issued: "Mar 2023",
+    credentialId: "L8ZVGLEWHGC7",
+    url: "https://www.coursera.org/account/accomplishments/certificate/L8ZVGLEWHGC7",
+  },
+  {
+    name: "Supervised Machine Learning: Regression and Classification",
+    org: "Coursera",
+    issued: "Apr 2023",
+    credentialId: "Q2DLYDSTBBMF",
+    url: "https://www.coursera.org/account/accomplishments/certificate/Q2DLYDSTBBMF",
   },
 ];
 
@@ -213,36 +294,88 @@ export const projects = [
 
 export const skills = [
   {
-    category: "Agent Orchestration",
-    items: ["LangGraph", "A2A Protocol", "Multi-Agent Systems"],
+    category: "Languages & Databases",
+    items: ["Python", "SQL", "MongoDB", "PostgreSQL", "SQLite", "Vector Databases"],
   },
   {
-    category: "Retrieval & RAG",
-    items: ["Qdrant", "FAISS", "Pinecone", "Weaviate", "LangExtract"],
+    category: "Agentic & LLM",
+    items: [
+      "LangChain",
+      "LangGraph",
+      "A2A Protocol",
+      "MCP",
+      "RAG",
+      "Prompt Engineering",
+      "Fine-Tuning (BERT, LLaMA)",
+      "Multi-Agent Orchestration",
+      "Tool Calling",
+      "LLM Query Routing",
+    ],
   },
   {
-    category: "LLM Platforms",
-    items: ["Gemini", "OpenAI", "LangChain", "LangSmith"],
+    category: "LLM Evaluation & Observability",
+    items: [
+      "LangSmith (Tracing, Monitoring, Debugging)",
+      "LLM / NLP Model Evaluation",
+      "Prompt & Retrieval Optimization",
+    ],
   },
   {
-    category: "ML / Fine-Tuning",
-    items: ["BERT", "LLaMA", "GPT-2", "LoRA / PEFT", "MMAction2 / MViT"],
+    category: "Backend & Architecture",
+    items: [
+      "FastAPI",
+      "REST APIs",
+      "WebSockets",
+      "asyncio",
+      "Asynchronous & Event-Driven Design",
+      "Distributed Systems",
+      "Microservices",
+      "Modular Monolith",
+      "Role-Based Auth & Security",
+    ],
   },
   {
-    category: "Object Detection",
-    items: ["YOLO Series", "EfficientDet"],
+    category: "Frontend & Interfaces",
+    items: ["Angular", "TypeScript", "REST / WebSocket API Integration", "Streamlit"],
   },
   {
-    category: "Vision & OCR",
-    items: ["OpenCV", "RapidOCR", "PaddleOCR", "Docling"],
+    category: "AI / ML Frameworks",
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "HuggingFace Transformers",
+      "PEFT / LoRA",
+      "Ultralytics",
+      "Mediapipe",
+      "TFOD",
+      "Super-Gradients",
+      "TFLite",
+      "ONNX",
+      "TensorRT",
+    ],
   },
   {
-    category: "Cloud Platforms",
-    items: ["Google Cloud Platform (GCP)", "Amazon Web Services (AWS)"],
+    category: "Vector Databases",
+    items: ["Qdrant", "FAISS", "Pinecone", "Weaviate", "MongoDB Atlas Vector Search"],
   },
   {
-    category: "Infra & Delivery",
-    items: ["FastAPI", "Docker", "PostgreSQL", "MongoDB Atlas", "SQLite"],
+    category: "Cloud & DevOps",
+    items: ["AWS (SageMaker, S3, EC2)", "GCP", "Docker", "CI/CD Pipelines", "Git", "Linux"],
+  },
+  {
+    category: "Expertise",
+    items: [
+      "Generative AI",
+      "Agentic Systems",
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "NLP",
+      "Software Architecture & Design",
+      "Hyperparameter Tuning",
+      "Model Quantization",
+      "Stakeholder Communication",
+    ],
   },
 ];
 
@@ -250,22 +383,29 @@ export const affiliates = [
   {
     name: "XWCare",
     by: "Xwits Developers Pvt. Ltd.",
-    tagline: "Clinic operating system for Indian healthcare providers",
+    byLink: "https://www.xwits.dev/",
+    tagline: "The AI clinic operating system — live for clinics, polyclinics and small hospitals.",
     description:
-      "An integrated practice-management platform — scheduling, EMR, e-prescriptions, GST-compliant billing and telemedicine — with an AI layer that drafts and proposes but never acts without human approval. Built to ABDM and DPDPA compliance by default.",
+      "One screen runs the whole clinic day: front desk, EMR encounters, e-prescriptions, GST billing, WhatsApp follow-ups, telemedicine, inventory and revenue ops. An AI layer drafts notes, prescriptions, follow-ups and replenishment — but never acts alone; a doctor signs every clinical action. Built ABDM/DPDPA-first for India, with HIPAA and GDPR profiles for clinics abroad.",
+    highlights: [
+      "AI drafts, humans approve — 0 autonomous clinical actions",
+      "Encounter-to-GST-invoice in one step",
+      "828 automated API tests across 56 suites",
+      "Audit log + kill switch on every automation",
+    ],
     link: "https://www.xwits.dev/products/xwcare",
-    linkLabel: "Visit XWCare",
+    demoLink: "https://calendly.com/xwits/30min",
   },
 ];
 
 export const faqs = [
   {
     q: "Who is Yogesh Modi?",
-    a: "A Senior Software Engineer (AI/ML) at Mindfire Solutions, based in Ahmedabad, India, with 3+ years of production experience building multi-agent systems, RAG pipelines and LLM infrastructure for enterprise clients.",
+    a: "A Senior Software Engineer (AI/ML) at Mindfire Solutions, based in Ahmedabad, India, with 3+ years of production experience architecting, building, scaling and delivering AI/ML systems for enterprise clients — agentic AI, generative AI, computer vision and applied ML.",
   },
   {
     q: "What does Yogesh build?",
-    a: "Production-grade agentic platforms end-to-end — multi-agent orchestration with LangGraph and the A2A protocol, retrieval-augmented generation systems, and applied computer-vision/NLP models — from architecture through QA to deployment.",
+    a: "Production-grade AI/ML systems end-to-end, architected through deployment — multi-agent orchestration with LangGraph and the A2A protocol, retrieval-augmented generation, generative fine-tuning, and applied computer-vision/NLP models. Agentic and generative AI are a focus, not the whole scope.",
   },
   {
     q: "What is SMARTON?",
@@ -281,16 +421,16 @@ export const faqs = [
   },
   {
     q: "Is Yogesh open to new opportunities?",
-    a: "Yes — actively open to Agentic Systems Engineer and Forward Deployment Engineer roles, plus select contracting work on multi-agent platforms.",
+    a: "Yes, on two fronts. For teams hiring: I'm open to senior AI/ML Systems Architect & Engineer roles across agentic AI, generative AI, computer vision and applied ML — backed by 3+ years shipping production systems and, over the last two years, leading stakeholder communication and guiding small cross-functional teams across web, backend, Android and AI. For clients: I take on select contracting and consulting engagements end-to-end — architecture, delivery, and coordinating the people around it — when you need a single owner who can both build the system and manage the collaboration and stakeholders around it.",
   },
   {
     q: "How can I contact Yogesh?",
-    a: "Email skmodiyogesh@gmail.com, use the contact form below, or check out his work on GitHub (YogeshModi-04).",
+    a: "Email skmodiyogesh@gmail.com, use the contact form below, connect on LinkedIn, or check out his work on GitHub (YogeshModi-04).",
   },
 ];
 
 export const contact = {
   headline: "Let's build something that ships.",
   sub:
-    "Open to Agentic Systems Engineer and Forward Deployment Engineer roles, and select contracting work on multi-agent platforms.",
+    "Open to AI/ML Systems Architect & Engineer roles — agentic AI, generative AI, computer vision and applied ML — plus select contracting and client engagements across the same range.",
 };

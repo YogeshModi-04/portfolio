@@ -11,9 +11,9 @@ export default function Skills() {
           <h2 className="section-title">Tools of the trade</h2>
         </div>
 
-        <div className="skills-grid" data-reveal>
+        <div className="skills-rows" data-reveal>
           {skills.map((group) => (
-            <div className="skills-group" key={group.category}>
+            <div className="skills-row" key={group.category}>
               <p className="mono skills-category">{group.category}</p>
               <div className="skills-tags">
                 {group.items.map((item) => (
@@ -28,18 +28,32 @@ export default function Skills() {
       </div>
 
       <style>{`
-        .skills-grid {
+        .skills-rows {
+          border-top: 1px solid var(--border-soft);
+        }
+
+        .skills-row {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 2rem;
+          grid-template-columns: 190px 1fr;
+          gap: clamp(1.5rem, 4vw, 3rem);
+          align-items: start;
+          padding: clamp(1.25rem, 3vw, 1.75rem) 0;
+          border-bottom: 1px solid var(--border-soft);
+        }
+
+        @media (max-width: 640px) {
+          .skills-row {
+            grid-template-columns: 1fr;
+            gap: 0.9rem;
+          }
         }
 
         .skills-category {
-          font-size: 0.7rem;
+          font-size: 0.72rem;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--fg-faint);
-          margin-bottom: 0.9rem;
+          padding-top: 0.35rem;
         }
 
         .skills-tags {

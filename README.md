@@ -5,6 +5,21 @@ built with Vite. Content lives in `src/data/content.js` — edit that one file t
 update copy, projects, skills, or affiliated products without touching any
 component.
 
+## Positioning
+
+The site is written for **two audiences at once — recruiters and independent
+clients**. The framing throughout leads with end-to-end ownership rather than
+a single specialty:
+
+- Role: **"AI/ML Systems Architect & Engineer"** (`profile.role`) — agentic AI
+  is presented as a strength within the broader AI/ML scope, not the whole
+  identity.
+- Hero eyebrow "Architecture · AI/ML Engineering · Delivery", Focus meta
+  "Architect · Build · Scale · Deliver" — vision/method, not a tech-stack list.
+- The FAQ "Is Yogesh open to new opportunities?" answer is explicitly split
+  into "For teams hiring:" and "For clients:" so neither audience has to hunt
+  for their part. Keep this dual framing if you edit copy.
+
 ## Before you publish, please review
 
 - **Headshot photo** — in place. Lives at `src/assets/headshot.jpg` and is
@@ -15,20 +30,26 @@ component.
   the photo later, replace `src/assets/headshot.jpg` with a new image (same
   filename, roughly square works best) or update the import path in
   `content.js`.
-- **Track record** — `experience` in `content.js` now lists all four real
-  roles (Zummit Infolabs → Sunbots Innovations → Cimcon Infotech → Mindfire
-  Solutions) with quantified metrics pulled from the resume on file
-  (`Yogesh_Modi_resume.pdf`, one level up from this folder). The Mindfire
-  entry intentionally keeps the client anonymized as "an enterprise client"
-  rather than naming them — confirm there's no NDA issue before naming them
-  publicly if you change that later.
-- **Education & Certifications** — added as a compact block under the Track
-  record timeline (`education` / `certifications` in `content.js`,
-  rendered by `Experience.jsx`).
-- **No LinkedIn/phone number** — only email and GitHub are on the contact
-  section and in `profile`. Your resume on file has both (LinkedIn: "Yogesh
-  Shivkumar Modi", phone: +91 8141761889) if you want them added — just
-  wasn't asked for yet.
+- **Track record** — `experience` in `content.js` lists all four real roles
+  (Zummit Infolabs → Sunbots Innovations → Cimcon Infotech → Mindfire
+  Solutions), each as a compressed set of themed bullets (lead-in + detail)
+  with quantified metrics from the resume on file (`Yogesh_Modi_resume.pdf`,
+  one level up from this folder). Rendered by `Experience.jsx` as an
+  editorial timeline. The Mindfire entry intentionally keeps the client
+  anonymized as "an enterprise client" (the resume names them, WWWSCO) —
+  confirm there's no NDA issue before naming them publicly if you change that.
+- **Education & Certifications** — a compact block under the Track record
+  timeline (`education` / `certifications` in `content.js`). Certifications
+  are the four real Coursera credentials (the ML Specialization + its three
+  component courses) each with a "Verify" link to its accomplishment URL.
+- **Skills / "Tools of the trade"** — `skills` in `content.js` mirrors the
+  resume's nine categories; rendered by `Skills.jsx` as **editorial rows**
+  (category label in a left column, tool chips flowing right, dividers
+  between) to match the Experience timeline's visual system.
+- **Contact** — LinkedIn and GitHub are now both in `profile` and shown as
+  icon buttons; the section uses an icon-based method list (Email, Location)
+  plus the working form, with a "Typically respond within 24 hours" note.
+  Phone number still omitted (resume has +91 8141761889 if you want it).
 - **Project list** — pulled from recent work notes plus the two products you
   named (SMARTON smart glasses, XWCare). Swap in whichever case studies you'd
   rather lead with, and add real repo links if public. The SMARTON entry in
@@ -39,9 +60,14 @@ component.
 
 ## Affiliated products
 
-`src/data/content.js` has an `affiliates` array (currently just XWCare) rendered
-by `src/components/Affiliates.jsx` as its own section, kept visually distinct
-from the case studies you personally engineered. Add more entries the same way.
+`src/data/content.js` has an `affiliates` array (currently just XWCare)
+rendered by `src/components/Affiliates.jsx` as its own "Products" section,
+kept visually distinct from the case studies you personally engineered. The
+XWCare card carries real detail sourced from the live product page
+(`xwits.dev/products/xwcare`) — tagline, description, and highlight bullets —
+credited to **Xwits Developers Pvt. Ltd.** (linked to `xwits.dev`), with two
+buttons: **Know more** (`link`) → the product page, and **Book demo**
+(`demoLink`) → the Calendly booking link. Add more entries the same way.
 
 ## Local development
 
