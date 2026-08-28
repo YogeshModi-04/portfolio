@@ -42,27 +42,27 @@ export const practices = {
       {
         heading: "Own it end-to-end",
         detail:
-          "Design, build, QA and deploy — I don't hand off after the prototype. Production-grade agentic platforms shipped for enterprise clients, not proofs of concept.",
+          "As technical lead I run the whole lifecycle — problem discovery, system design, QA, production rollout and client-facing demos — owning timelines and stakeholder communication. Production platforms shipped for enterprise clients, not proofs of concept.",
       },
       {
-        heading: "Iterate on architecture, not just code",
+        heading: "Treat architecture as a variable, not just code",
         detail:
-          "The civil-engineering PDF pipeline went through multiple architecture passes (PyMuPDF + Gemini Vision, page-classification heuristics via OpenCV edge density) before settling — I treat the pipeline shape itself as a variable to test.",
+          "Architected a production multi-agent platform on the A2A protocol with semantic LLM query routing (LangGraph + Gemini), on a distributed backend that combines modular-monolith and microservices patterns with asyncio for concurrent, non-blocking agent execution — the system's shape chosen for the workload, not by default.",
       },
       {
-        heading: "Benchmark before committing",
+        heading: "Measure, then decide",
         detail:
-          "Ran a structured PaddleOCR vs. Docling vs. Unstructured.io comparison for CPU-only OCR before recommending PaddleOCR for production and Docling for RAG ingestion — decisions backed by evaluation, not preference.",
+          "Ship decisions backed by numbers: raised currency-detection accuracy 55%→79% and document detection 80%→94% on SMARTON, and lifted activity-detection accuracy 30%→65% by moving from LSTM to pretrained MMAction2 — measured gains, not preference.",
       },
       {
-        heading: "Debug at the infrastructure layer",
+        heading: "Work below the framework line",
         detail:
-          "Comfortable below the framework line — resolved CUDA token-ID overflow and position-embedding errors during GPT-2 LoRA fine-tuning, and tuned training runs across L4 and P100 GPUs.",
+          "Comfortable in the infrastructure layer — cut deployment time 80% with Docker and supervisord orchestration, deployed quantized models on-device with Android teams, and ran a FastAPI alerting service on Jetson Nano hardware.",
       },
       {
         heading: "Instrument what I ship",
         detail:
-          "Working toward RAGAS/DeepEval evaluation coverage and LangSmith observability with admin-controlled tracing, so agent behavior is measurable, not anecdotal.",
+          "Instrumented the full agent graph with LangSmith tracing for flow visibility, failure diagnosis and output-quality evaluation — behind an admin-controlled on/off toggle that manages tracing cost and data sensitivity in production. Behavior measured, not assumed.",
       },
     ],
   },
@@ -276,14 +276,6 @@ export const projects = [
   },
   {
     id: "06",
-    title: "Implicit-Feedback Recommender",
-    tagline: "RecBole + DeepFM",
-    description:
-      "A recommendation system built on RecBole using implicit feedback signals and a DeepFM model — evaluated for ranking quality against real interaction data rather than synthetic benchmarks.",
-    stack: ["RecBole", "DeepFM", "Python"],
-  },
-  {
-    id: "07",
     title: "Natural-Language SQL Agent",
     tagline: "LangChain over PostgreSQL",
     description:
