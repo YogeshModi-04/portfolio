@@ -22,30 +22,43 @@ a single specialty:
 
 ## Before you publish, please review
 
-- **Headshot photo** — in place. Lives at `src/assets/headshot.jpg` and is
-  imported in `src/data/content.js` (`profile.photoUrl`) rather than dropped
-  in `public/` — this project builds to a single self-contained HTML file
+- **Headshot photo** — in place, in the **Background (About) section** (not
+  the hero). Lives at `src/assets/headshot.jpg` and is imported in
+  `src/data/content.js` (`profile.photoUrl`) rather than dropped in `public/`
+  — this project builds to a single self-contained HTML file
   (`vite-plugin-singlefile`), so images need to go through Vite's asset
   pipeline as a JS import to get base64-inlined into that one file. To swap
-  the photo later, replace `src/assets/headshot.jpg` with a new image (same
-  filename, roughly square works best) or update the import path in
-  `content.js`.
-- **Track record** — `experience` in `content.js` lists all four real roles
-  (Zummit Infolabs → Sunbots Innovations → Cimcon Infotech → Mindfire
-  Solutions), each as a compressed set of themed bullets (lead-in + detail)
-  with quantified metrics from the resume on file (`Yogesh_Modi_resume.pdf`,
-  one level up from this folder). Rendered by `Experience.jsx` as an
-  editorial timeline. The Mindfire entry intentionally keeps the client
-  anonymized as "an enterprise client" (the resume names them, WWWSCO) —
-  confirm there's no NDA issue before naming them publicly if you change that.
-- **Education & Certifications** — a compact block under the Track record
-  timeline (`education` / `certifications` in `content.js`). Certifications
-  are the four real Coursera credentials (the ML Specialization + its three
-  component courses) each with a "Verify" link to its accomplishment URL.
+  the photo later, replace `src/assets/headshot.jpg` with a new image (a
+  portrait crop works best; it's shown at a 4:5 ratio) or update the import
+  path in `content.js`.
+- **Track record → "Problems I've solved"** — the Experience section is now a
+  **problem-solving showcase**, not a career timeline. `caseStudies` in
+  `content.js` holds three case studies (the Mindfire multi-agent platform +
+  SMARTON + Theft Detection), each with **Problem / Approach / Impact** and a
+  tag row; rendered by `Experience.jsx`. There are intentionally **no dates,
+  role titles, or company names** here — the full chronological career detail
+  is meant to live in the downloadable résumé (not yet added; see below). The
+  enterprise client stays anonymized as "the client" (the resume names them,
+  WWWSCO) — confirm there's no NDA issue before naming them.
+- **Education & Certifications** — a compact block under the case studies
+  (`education` / `certifications` in `content.js`). Certifications are the
+  four real Coursera credentials (the ML Specialization + its three component
+  courses) each with a "Verify" link to its accomplishment URL.
+- **Testimonials** — `testimonials` in `content.js`, rendered by
+  `Testimonials.jsx` as a 3-up card grid (quote + avatar initials + linked
+  name + linked company), placed right before Contact. ⚠️ **The three quotes
+  (Deep Parmar / Xwits, Ravi Jadav / Sunbots, Jay Bhavsar / Infinite Castle)
+  are Claude-drafted from notes you gave — each named person should approve or
+  edit their own wording before this goes fully public.**
+- **Résumé download — NOT built yet.** You said the résumé download will carry
+  the full technical/career detail. The PDF is `../Yogesh_Modi_resume.pdf`
+  (one level up). To add it: copy it into `src/assets/`, `import` it in a
+  component, and link a download button (importing inlines it into the
+  single-file build so it works offline / in previews).
 - **Skills / "Tools of the trade"** — `skills` in `content.js` mirrors the
   resume's nine categories; rendered by `Skills.jsx` as **editorial rows**
   (category label in a left column, tool chips flowing right, dividers
-  between) to match the Experience timeline's visual system.
+  between) to match the case-study block's visual system.
 - **Contact** — LinkedIn and GitHub are both in `profile` and shown as icon
   buttons; the section pairs an icon-based method list (Email, Location) with
   a scheduling card whose **Schedule a meeting** button opens the Calendly
@@ -66,7 +79,10 @@ a single specialty:
   whichever you'd rather lead with, and add real repo links if public. The
   SMARTON entry still describes your role generically ("contributed AI/ML
   engineering") — the quantified accuracy numbers for that work now live in
-  the Track record timeline instead, but feel free to tighten the card copy.
+  the Track record case studies instead, but feel free to tighten the card
+  copy. Note SMARTON and the multi-agent work now appear in **both** the Track
+  record case studies and this Projects section — worth deciding whether to
+  differentiate or consolidate them.
 
 ## Affiliated products
 
@@ -146,11 +162,26 @@ Every future `git push` redeploys automatically — no manual upload step.
 ```
 src/
   data/content.js        ← all copy/content — edit this first
-  assets/headshot.jpg    ← hero photo, imported (not in public/) so it inlines into the single-file build
-  components/            ← Hero, About, Practices, Experience, Projects, Affiliates, Skills, FAQ, Contact
-  hooks/useReveal.js      ← scroll-reveal animation hook
-  index.css               ← design tokens (colors, type, spacing) + global styles
+  assets/headshot.jpg    ← photo, shown in the Background section (imported, not in public/, so it inlines into the single-file build)
+  components/            ← Hero, About, Practices, Experience, Projects, Affiliates, Skills, Testimonials, FAQ, Contact
+  hooks/useReveal.js      ← scroll-reveal hook (adds `is-visible` to `[data-reveal]`; also drives the testimonial slide-in)
+  index.css               ← design tokens + global styles (incl. the `.card` glow and reduced-motion rules)
 ```
 
 (No `api/` directory — the site is fully static, with contact handled by the
 Calendly / email / social links described above.)
+
+## Visual effects
+
+- **Card glow** — a soft, theme-aware border halo on the global `.card` class
+  (`index.css`): a `::after` box-shadow that pulses via `opacity` (compositor-
+  friendly) and brightens on hover. It applies to every card — the XWCare
+  product card, the Projects/"Selected builds" cards, and the testimonials.
+  Tune it in one place (`.card::after` / `@keyframes card-glow`).
+- **Testimonial slide-in** — testimonial cards slide in **left-to-right**,
+  staggered, as they scroll into view (`Testimonials.jsx`, on top of
+  `useReveal`).
+- **Hero text glow** — a subtle `text-shadow` on the hero name and eyebrow
+  (`Hero.jsx`).
+- All of the above respect `prefers-reduced-motion` (global rule in
+  `index.css`).

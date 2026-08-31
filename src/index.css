@@ -274,6 +274,7 @@ img {
 
 /* ---------- Card ---------- */
 .card {
+  position: relative;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   background: var(--surface);
@@ -282,4 +283,31 @@ img {
 
 .card:hover {
   border-color: var(--fg-faint);
+}
+
+/* Soft, theme-aware border glow on cards (gently pulses, brightens on hover) */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 22px -6px color-mix(in srgb, var(--fg) 26%, transparent);
+  opacity: 0.5;
+  transition: opacity 0.45s ease, box-shadow 0.45s ease;
+  animation: card-glow 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes card-glow {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+.card:hover::after {
+  box-shadow: 0 0 34px -3px color-mix(in srgb, var(--fg) 38%, transparent);
+  opacity: 1;
 }

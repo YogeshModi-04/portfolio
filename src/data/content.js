@@ -104,98 +104,36 @@ export const practices = {
   },
 };
 
-export const experience = [
+export const caseStudies = [
   {
-    period: "May 2025 – Present",
-    role: "Senior Software Engineer, AI/ML",
-    org: "Mindfire Solutions",
-    bullets: [
-      {
-        lead: "Technical Leadership",
-        detail:
-          "Led the full project lifecycle as technical lead — problem discovery, system design, QA, production rollout and client-facing demos — owning timelines, stakeholder communication and cross-functional delivery.",
-      },
-      {
-        lead: "Agentic Architecture",
-        detail:
-          "Architected a production multi-agent, generative-AI platform spanning autonomous workflows, task planning, tool integration and LLM-driven decision systems, on a distributed async backend (modular monolith + microservices, asyncio) built for concurrent, non-blocking, high-throughput agent execution.",
-      },
-      {
-        lead: "Scale",
-        detail:
-          "Orchestrated 5+ specialized agents — sales analytics, documentation Q&A, product catalog search, vendor performance — with RAG pipelines on Qdrant covering 46+ business APIs and 10,000+ product specifications.",
-      },
-      {
-        lead: "Observability & Prompting",
-        detail:
-          "Instrumented the agent graph with admin-gated LangSmith tracing to monitor execution flow, debug routing decisions and evaluate output quality, and optimized prompt strategies to raise LLM query-routing accuracy and response quality.",
-      },
-      {
-        lead: "Security & Auditability",
-        detail:
-          "Implemented role-based authentication and permission management across the multi-agent backend, enforcing access restrictions and auditability of agent actions and data flows.",
-      },
-      {
-        lead: "Delivery Infrastructure",
-        detail:
-          "Built FastAPI/REST agent services and automation workflows, ran CI/CD with Dockerized deployments across AWS and GCP integrating Qdrant, FAISS, Pinecone and Weaviate, and shipped an Angular front-end — cutting deployment time 80% via supervisord orchestration.",
-      },
-    ],
-    tags: ["A2A Protocol", "LangGraph", "LangSmith", "FastAPI", "Docker"],
+    title: "Enterprise Multi-Agent AI Platform",
+    problem:
+      "The client's teams were buried under data scattered across 46+ business systems and 10,000+ product specs — sales analytics, documentation, product catalog and vendor performance all lived in separate places, with no fast way to get answers.",
+    approach:
+      "I architected a production multi-agent platform on the A2A protocol — 5+ specialized agents with plain-language query routing (LangGraph + Gemini), running concurrently on a distributed async backend, over RAG pipelines on a Qdrant knowledge base. I added admin-gated tracing to control cost and data sensitivity, and role-based access for auditability.",
+    impact:
+      "Non-technical staff now get answers by asking in plain language across 46+ systems and 10,000+ specs — and create and monitor their own agents with no code. Containerized delivery cut deployment time by 80%.",
+    tags: ["Python", "A2A Protocol", "LangGraph", "RAG", "Qdrant", "FastAPI", "Angular", "Docker"],
   },
   {
-    period: "Jan 2025 – Mar 2025",
-    role: "Machine Learning Engineer",
-    org: "Cimcon Infotech Pvt Ltd",
-    bullets: [
-      {
-        lead: "Model Training",
-        detail:
-          "Trained and optimized ML models on financial data and improved an internal Python package for sequential data processing.",
-      },
-      {
-        lead: "Pipelines & Deployment",
-        detail:
-          "Built automated preprocessing pipelines and FastAPI model-serving applications, deployed via Docker and validated with Streamlit.",
-      },
-    ],
-    tags: ["Python", "FastAPI", "Docker", "Streamlit"],
+    title: "SMARTON — On-Device Vision Accuracy",
+    problem:
+      "SMARTON's currency and document detection wasn't accurate enough to trust in the field, and had to run on constrained mobile hardware rather than a server.",
+    approach:
+      "I optimized the training datasets and tuned hyperparameters, quantized the models to run on-device with the Android team, and built a LangChain/RAG document-QA layer for production-grade retrieval.",
+    impact:
+      "Currency-detection accuracy rose 55% → 79% and document detection 80% → 94%, running quantized on mobile.",
+    tags: ["Python", "TensorFlow", "TFLite", "Computer Vision", "Deep Learning", "Model Fine-Tuning", "Quantization", "LangChain", "RAG"],
   },
   {
-    period: "Feb 2023 – Dec 2024",
-    role: "AI Engineer",
-    org: "Sunbots Innovations LLP",
-    bullets: [
-      {
-        lead: "Model Development",
-        detail:
-          "Took computer-vision models from prototype to production across product features and client projects; built automated image-labeling pipelines and data-filtering techniques that cut manual annotation effort and improved model performance.",
-      },
-      {
-        lead: "Deployment & Integration",
-        detail:
-          "Engineered data pipelines for Ultralytics and Super-Gradients model variants, partnered with Android teams on on-device ML deployment, and used Docker for scalable development.",
-      },
-      {
-        lead: "Flagship Builds",
-        detail:
-          "Shipped SMARTON (currency-detection accuracy 55%→79%, document detection 80%→94%, a LangChain/RAG document-QA app, quantized on-device models) and a theft-detection system (LSTM→pretrained MMAction2, activity-detection accuracy 30%→65%, FastAPI alerting on Jetson Nano via Docker).",
-      },
-    ],
-    tags: ["Computer Vision", "Ultralytics", "MMAction2", "TFLite", "Docker"],
-  },
-  {
-    period: "Oct 2022 – Feb 2023",
-    role: "Data Science Intern",
-    org: "Zummit Infolabs",
-    bullets: [
-      {
-        lead: "Training & Implementation",
-        detail:
-          "Completed intensive ML and Data Science training (supervised/unsupervised learning, preprocessing, feature engineering, model evaluation) and applied Python, NumPy, Pandas and Scikit-learn to real-world datasets using Git-based, reproducible ML workflows.",
-      },
-    ],
-    tags: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+    title: "Theft Detection — Activity Recognition",
+    problem:
+      "An LSTM-based activity-detection model was too inaccurate (30%) to be useful for real-time theft alerting on edge hardware.",
+    approach:
+      "I rebuilt the training pipeline around pretrained MMAction2 video-classification models and engineered a data pipeline supporting all Ultralytics detector variants, deploying a FastAPI alerting service on a Jetson Nano via Docker.",
+    impact:
+      "Activity-detection accuracy more than doubled, 30% → 65%, running as a live alerting service on edge hardware.",
+    tags: ["Python", "PyTorch", "MMAction2", "Ultralytics", "Computer Vision", "Deep Learning", "Model Fine-Tuning", "FastAPI", "Jetson Nano", "Docker"],
   },
 ];
 
@@ -423,7 +361,37 @@ export const faqs = [
   },
   {
     q: "How can I contact Yogesh?",
-    a: "Email skmodiyogesh@gmail.com, use the contact form below, connect on LinkedIn, or check out his work on GitHub (YogeshModi-04).",
+    a: "Email skmodiyogesh@gmail.com, book a 30-minute call from the Contact section below, connect on LinkedIn, or check out his work on GitHub (YogeshModi-04).",
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "Yogesh worked with us on our theft-detection system, and his instinct for research and optimization set him apart — he dug into the problem properly rather than settling for the first thing that worked, and pushed the model well past where it started. Clear communication, real ownership, and a genuine pleasure to collaborate with. I'd happily work with him again.",
+    name: "Deep Parmar",
+    title: "Founder & Director",
+    company: "Xwits Developers",
+    companyUrl: "https://www.xwits.dev/",
+    link: "https://www.linkedin.com/in/deep56parmar/",
+  },
+  {
+    quote:
+      "Yogesh was central to the AI behind SMARTON, our assistive smart-glasses platform now serving 17,000+ blind and visually impaired users. He took state-of-the-art computer-vision and deep-learning models from research all the way to running on-device, and worked closely with our Android team to integrate them into the product. Sharp, dependable, and genuinely great to build with.",
+    name: "Ravi Jadav",
+    title: "Chief Product Officer & Co-Founder",
+    company: "Sunbots Innovations",
+    companyUrl: "https://www.sunbots.in/",
+    link: "https://www.linkedin.com/in/theravijadav/",
+  },
+  {
+    quote:
+      "Yogesh and I architected and delivered a real-time voice-onboarding flow for a dating app, integrating Gemini Live over a NestJS backend. He's strong where it counts — we planned the architecture together and he shipped his side cleanly. We both knew the stack well, so we moved fast, and he's genuinely easy to collaborate with on an open-ended problem.",
+    name: "Jay Bhavsar",
+    title: "Co-Founder & Technology Architect",
+    company: "Infinite Castle",
+    companyUrl: "https://infinitecastle.dev/",
+    link: "https://www.linkedin.com/in/jaybhavsar2010/",
   },
 ];
 
