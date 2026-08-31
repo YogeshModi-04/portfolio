@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Env vars (e.g. RESEND_API_KEY) — set these in Vercel, never commit them
+# Env vars — set any secrets in Vercel, never commit them
 .env
 .env.*
 !.env.example

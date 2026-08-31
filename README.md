@@ -46,17 +46,27 @@ a single specialty:
   resume's nine categories; rendered by `Skills.jsx` as **editorial rows**
   (category label in a left column, tool chips flowing right, dividers
   between) to match the Experience timeline's visual system.
-- **Contact** — LinkedIn and GitHub are now both in `profile` and shown as
-  icon buttons; the section uses an icon-based method list (Email, Location)
-  plus the working form, with a "Typically respond within 24 hours" note.
-  Phone number still omitted (resume has +91 8141761889 if you want it).
-- **Project list** — pulled from recent work notes plus the two products you
-  named (SMARTON smart glasses, XWCare). Swap in whichever case studies you'd
-  rather lead with, and add real repo links if public. The SMARTON entry in
-  `projects` still describes your role generically ("contributed AI/ML
+- **Contact** — LinkedIn and GitHub are both in `profile` and shown as icon
+  buttons; the section pairs an icon-based method list (Email, Location) with
+  a scheduling card whose **Schedule a meeting** button opens the Calendly
+  link in `profile.calendly` (`calendly.com/skmodiyogesh/30min`), plus an
+  "or email me directly" fallback and a "Typically respond within 24 hours"
+  note. There is no contact form or backend — scheduling and email only.
+- **Working style ("Approach")** — both columns are now written in plain,
+  client-readable language AND grounded in real resume facts. "How I
+  Engineer" keeps the technical substance (multi-agent platform, accuracy
+  gains, 80% deploy-time cut, behaviour tracing) in plain words; "How I Work
+  With Clients" speaks to a non-technical buyer. The earlier fabricated
+  claims (civil-engineering spec docs, CPU-only OCR benchmark, RAGAS/DeepEval)
+  have been removed from here and from `about.bio` (now a chunked, ~50/50
+  technical/plain array).
+- **Project list** — six case studies in `projects` (SMARTON, Agentic
+  Shopping Assistant, Engineering-Spec Extraction Pipeline, Two-Pass Spec
+  Summarizer, GPT-2 LoRA Fine-Tune, Natural-Language SQL Agent). Swap in
+  whichever you'd rather lead with, and add real repo links if public. The
+  SMARTON entry still describes your role generically ("contributed AI/ML
   engineering") — the quantified accuracy numbers for that work now live in
-  the Track record timeline instead, but feel free to tighten the project
-  card copy too.
+  the Track record timeline instead, but feel free to tighten the card copy.
 
 ## Affiliated products
 
@@ -86,33 +96,29 @@ This outputs a single self-contained `dist/index.html` (all JS/CSS inlined,
 only Google Fonts loaded externally). You don't need to run this yourself for
 Vercel — Vercel runs it automatically on every deploy.
 
-## The contact form (Vercel Function)
+## Sharing a quick preview (no deploy)
 
-The Contact section has a real form (name, email/phone, message). It posts to
-`/api/contact`, a serverless function (`api/contact.js`) that Vercel deploys
-automatically alongside the static site — no separate backend to host.
+Because the build is one self-contained file, it can be shared as a link
+without hosting. The single-file `dist/index.html` can be opened directly in
+a browser, emailed, or published as a Claude Artifact for a shareable URL.
+One caveat: if published as an Artifact, strip the outer
+`<!doctype>/<html>/<head>/<body>` wrappers from `dist/index.html` first (the
+Artifact host adds its own skeleton). The contact/scheduling links (Calendly,
+email, social) all work in any preview since they're plain external links.
 
-The function sends the message via **[Resend](https://resend.com)**, a
-transactional email API with a free tier (3,000 emails/month, 100/day, no
-credit card required). To make it work:
+## Scheduling & contact
 
-1. Create a free Resend account at [resend.com](https://resend.com) and grab
-   an API key from the dashboard.
-2. In your Vercel project → **Settings → Environment Variables**, add:
-   - `RESEND_API_KEY` = the key from step 1
-3. Redeploy (or it'll pick it up on the next deploy).
+There is no contact form or serverless backend. The Contact section offers:
 
-Out of the box this sends from Resend's shared `onboarding@resend.dev`
-address, which only delivers to the email your Resend account was signed up
-with — fine for testing. To let anyone's message reach you reliably, verify
-your own domain in Resend (Resend walks you through adding a couple of DNS
-records at your registrar) and change `FROM_EMAIL` in `api/contact.js` to an
-address on that domain.
+- **Schedule a meeting** — a button linking to the Calendly URL in
+  `profile.calendly` (`calendly.com/skmodiyogesh/30min`), opening a 30-minute
+  booking page in a new tab.
+- **Email** — a `mailto:` link to `profile.email`.
+- **Social** — LinkedIn and GitHub icon buttons.
 
-Until `RESEND_API_KEY` is set, or in local dev (`npm run dev`, which doesn't
-run the `/api` function), submitting the form fails gracefully and shows an
-"email me directly" link instead — that's expected, not a bug. It also has a
-hidden honeypot field to filter out simple bots.
+To change the booking link, edit `profile.calendly` in `src/data/content.js`.
+All of these are plain external links, so nothing needs a backend, an API key,
+or environment variables.
 
 ## Deploying to Vercel with yogeshmodi.in
 
@@ -120,18 +126,17 @@ hidden honeypot field to filter out simple bots.
    from this folder — it'll prompt you to log in and deploy directly without
    Git).
 2. At [vercel.com](https://vercel.com), sign up free and **Import Project**
-   from that GitHub repo. Vercel auto-detects Vite — no config needed.
-3. Add the `RESEND_API_KEY` environment variable (see above) before or after
-   the first deploy.
-4. Once deployed, go to the project's **Settings → Domains** and add
+   from that GitHub repo. Vercel auto-detects Vite — no config needed, and no
+   environment variables are required.
+3. Once deployed, go to the project's **Settings → Domains** and add
    `yogeshmodi.in` (and `www.yogeshmodi.in` if you want both).
-5. Vercel will show you the exact DNS records to add. Since the domain is
+4. Vercel will show you the exact DNS records to add. Since the domain is
    registered at Hostinger, go to **hPanel → Domains → yogeshmodi.in → DNS /
    Nameservers** and either:
    - point the **A record** for `@` and a **CNAME** for `www` at the values
      Vercel gives you (keeps Hostinger as your DNS), or
    - switch to Vercel's nameservers if you'd rather manage DNS there.
-6. DNS changes can take a few minutes to a few hours to propagate. Vercel
+5. DNS changes can take a few minutes to a few hours to propagate. Vercel
    auto-issues a free SSL certificate once it verifies the domain.
 
 Every future `git push` redeploys automatically — no manual upload step.
@@ -139,7 +144,6 @@ Every future `git push` redeploys automatically — no manual upload step.
 ## Project structure
 
 ```
-api/contact.js           ← Vercel serverless function for the contact form
 src/
   data/content.js        ← all copy/content — edit this first
   assets/headshot.jpg    ← hero photo, imported (not in public/) so it inlines into the single-file build
@@ -147,3 +151,6 @@ src/
   hooks/useReveal.js      ← scroll-reveal animation hook
   index.css               ← design tokens (colors, type, spacing) + global styles
 ```
+
+(No `api/` directory — the site is fully static, with contact handled by the
+Calendly / email / social links described above.)
