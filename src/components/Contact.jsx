@@ -1,45 +1,7 @@
-import { useState } from "react";
 import { profile, contact } from "../data/content";
-
-const INITIAL_FORM = { name: "", contact: "", message: "", website: "" };
 
 export default function Contact() {
   const year = new Date().getFullYear();
-  const [form, setForm] = useState(INITIAL_FORM);
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
-
-  function update(field) {
-    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (form.website) return; // honeypot tripped — say nothing, do nothing
-
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (res.ok && data.ok) {
-        setStatus("sent");
-        setForm(INITIAL_FORM);
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
-
-  const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
-    "Portfolio contact"
-  )}&body=${encodeURIComponent(
-    `Name: ${form.name}\nContact: ${form.contact}\n\n${form.message}`
-  )}`;
 
   return (
     <footer id="contact" className="contact">
@@ -115,73 +77,36 @@ export default function Contact() {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <p className="contact-form-title">Send a message</p>
+          <div className="contact-schedule">
+            <span className="contact-schedule-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <path d="M9 14.5l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
 
-            <label className="contact-field">
-              <span>Name</span>
-              <input
-                type="text"
-                name="name"
-                required
-                value={form.name}
-                onChange={update("name")}
-                autoComplete="name"
-              />
-            </label>
+            <p className="contact-schedule-title">Book a 30-minute call</p>
+            <p className="contact-schedule-sub">
+              Grab a time that works for you and we'll talk it through over Google Meet — what
+              you're building, and how I can help.
+            </p>
 
-            <label className="contact-field">
-              <span>Email or phone</span>
-              <input
-                type="text"
-                name="contact"
-                required
-                value={form.contact}
-                onChange={update("contact")}
-                autoComplete="email"
-              />
-            </label>
+            <a
+              className="btn btn-solid contact-schedule-btn"
+              href={profile.calendly}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Schedule a meeting
+            </a>
 
-            <label className="contact-field">
-              <span>Message</span>
-              <textarea
-                name="message"
-                rows={4}
-                required
-                value={form.message}
-                onChange={update("message")}
-              />
-            </label>
-
-            {/* Honeypot — hidden from real visitors, catches simple bots */}
-            <label className="contact-hp" aria-hidden="true">
-              <span>Website</span>
-              <input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                value={form.website}
-                onChange={update("website")}
-              />
-            </label>
-
-            <button className="btn btn-solid contact-submit" type="submit" disabled={status === "sending"}>
-              {status === "sending" ? "Sending…" : "Send message"}
-            </button>
-
-            <div className="contact-form-status" role="status">
-              {status === "sent" && <p className="contact-status-ok">Message sent — thanks, I'll get back to you soon.</p>}
-              {status === "error" && (
-                <p className="contact-status-error">
-                  Couldn't send that just now. Please{" "}
-                  <a href={mailtoHref}>email me directly</a> instead.
-                </p>
-              )}
-            </div>
+            <a className="contact-schedule-alt" href={`mailto:${profile.email}`}>
+              or email me directly
+            </a>
 
             <p className="contact-form-note">Typically respond within 24 hours</p>
-          </form>
+          </div>
         </div>
 
         <div className="contact-footer">
@@ -333,85 +258,65 @@ export default function Contact() {
           color: var(--invert-fg);
         }
 
-        .contact-form {
+        .contact-schedule {
           display: flex;
           flex-direction: column;
-          gap: 1.1rem;
-          padding: clamp(1.5rem, 3vw, 2rem);
+          align-items: center;
+          text-align: center;
+          gap: 0.9rem;
+          padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 3vw, 2rem);
           border: 1px solid var(--invert-fg-soft);
           border-radius: var(--radius);
         }
 
-        .contact-form-title {
-          font-size: 0.95rem;
-          font-weight: 600;
-          margin-bottom: 0.2rem;
-        }
-
-        .contact-field {
+        .contact-schedule-icon {
           display: flex;
-          flex-direction: column;
-          gap: 0.4rem;
-          font-size: 0.8rem;
-          color: var(--invert-fg-soft);
-        }
-
-        .contact-field input,
-        .contact-field textarea {
-          font-family: inherit;
-          font-size: 0.95rem;
+          align-items: center;
+          justify-content: center;
+          width: 56px;
+          height: 56px;
+          border: 1px solid var(--invert-fg-soft);
+          border-radius: 50%;
           color: var(--invert-fg);
-          background: transparent;
-          border: 1px solid var(--invert-fg-soft);
-          border-radius: var(--radius);
-          padding: 0.65rem 0.8rem;
-          resize: vertical;
+          margin-bottom: 0.35rem;
         }
 
-        .contact-field input:focus,
-        .contact-field textarea:focus {
-          outline: none;
+        .contact-schedule-title {
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 1.35rem;
+        }
+
+        .contact-schedule-sub {
+          color: var(--invert-fg-soft);
+          font-size: 0.95rem;
+          line-height: 1.6;
+          max-width: 34ch;
+        }
+
+        .contact-schedule-btn {
+          margin-top: 0.6rem;
+          border-radius: var(--radius);
+        }
+
+        .contact-schedule-alt {
+          font-size: 0.85rem;
+          color: var(--invert-fg-soft);
+          text-decoration: none;
+          border-bottom: 1px solid var(--invert-fg-soft);
+          padding-bottom: 1px;
+        }
+
+        .contact-schedule-alt:hover {
+          color: var(--invert-fg);
           border-color: var(--invert-fg);
         }
 
-        .contact-hp {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
-          opacity: 0;
-          pointer-events: none;
-        }
-
-        .contact-submit {
-          align-self: flex-start;
-          border-radius: var(--radius);
-        }
-
-        .contact-submit:disabled {
-          opacity: 0.6;
-          cursor: default;
-        }
-
-        .contact-form-status {
-          min-height: 1.4em;
-          font-size: 0.85rem;
-        }
-
-        .contact-status-ok {
-          color: var(--invert-fg);
-        }
-
-        .contact-status-error {
-          color: var(--invert-fg-soft);
-        }
-
-        .contact-status-error a {
-          color: var(--invert-fg);
-          text-decoration: underline;
-        }
-
         .contact-form-note {
+          margin-top: 0.6rem;
+          padding-top: 1rem;
+          width: 100%;
+          border-top: 1px solid var(--invert-fg-soft);
           font-size: 0.78rem;
           color: var(--invert-fg-soft);
           text-align: center;

@@ -12,26 +12,32 @@ export const profile = {
   github: "https://github.com/YogeshModi-04",
   githubHandle: "YogeshModi-04",
   linkedin: "https://www.linkedin.com/in/yogesh-shivkumar-modi/",
+  calendly: "https://calendly.com/skmodiyogesh/30min",
   initials: "YM",
   photoUrl: headshot,
 };
 
 export const heroMeta = [
   { label: "Based in", value: "Ahmedabad, IN" },
-  { label: "Experience", value: "3+ years, production" },
+  { label: "Experience", value: "5 years overall" },
   { label: "Focus", value: "Architect · Build · Scale · Deliver" },
 ];
 
 export const about = {
   statement:
-    "I architect, build, scale and deliver AI/ML systems that ship — not demos. Three years of production experience spanning agentic and generative AI, computer vision and applied ML, taken from architecture through QA to enterprise deployment.",
-  bio:
-    "I'm a Senior Software Engineer at Mindfire Solutions, working at the intersection of multi-agent orchestration, retrieval-augmented generation, and applied NLP/CV. My day-to-day spans LangGraph and the A2A protocol for agent coordination, RAG pipelines across Qdrant, FAISS, Pinecone and Weaviate, and fine-tuning work on BERT, LLaMA and GPT-2 with LoRA/PEFT — usually against real infrastructure constraints like GPU memory limits and CPU-only OCR requirements, not clean notebooks. I've deployed and run this kind of work on both GCP and AWS, so cloud choice is a project decision, not a dependency.",
+    "I architect, build, scale and deliver AI/ML systems that ship — not demos. Five years of experience overall — spanning agentic and generative AI, computer vision and applied ML — taken from architecture through QA to enterprise deployment.",
+  bio: [
+    "I'm a Senior AI/ML Engineer at Mindfire Solutions. I take AI systems from a rough, real-world problem all the way to production — running for actual businesses, not sitting in a notebook.",
+    "My core is agentic and generative AI: multi-agent orchestration and retrieval-augmented generation (RAG), built on LangGraph and the A2A protocol, with retrieval across vector databases like Qdrant, FAISS, Pinecone and Weaviate.",
+    "I engineer the backend that holds it together — distributed, asynchronous FastAPI services in modular-monolith and microservices patterns — so many AI agents can run at once, quickly and reliably.",
+    "I work across the wider ML space too: fine-tuning language models such as BERT and LLaMA with LoRA/PEFT, and shipping computer-vision models to production — usually under real hardware and cost limits, not ideal lab conditions.",
+    "I run all of this on both AWS and GCP with Docker and CI/CD, so the cloud is a project decision, not a limitation. And I stay close to the business side — owning timelines and turning technical trade-offs into outcomes stakeholders can act on.",
+  ],
   facts: [
     { label: "Role", value: "Senior SWE, AI/ML" },
     { label: "Company", value: "Mindfire Solutions" },
     { label: "Location", value: "Ahmedabad, Gujarat, India" },
-    { label: "Experience", value: "3+ years production" },
+    { label: "Experience", value: "5 years overall" },
   ],
 };
 
@@ -40,29 +46,29 @@ export const practices = {
     title: "How I Engineer",
     items: [
       {
-        heading: "Own it end-to-end",
+        heading: "I own it from start to finish",
         detail:
-          "As technical lead I run the whole lifecycle — problem discovery, system design, QA, production rollout and client-facing demos — owning timelines and stakeholder communication. Production platforms shipped for enterprise clients, not proofs of concept.",
+          "I run the whole thing — from the first rough problem through design, testing, launch and the client demo — including timelines and keeping everyone in the loop. What I deliver is real software running in production for real companies, not a demo that falls apart after the pitch.",
       },
       {
-        heading: "Treat architecture as a variable, not just code",
+        heading: "I shape the system to fit the job",
         detail:
-          "Architected a production multi-agent platform on the A2A protocol with semantic LLM query routing (LangGraph + Gemini), on a distributed backend that combines modular-monolith and microservices patterns with asyncio for concurrent, non-blocking agent execution — the system's shape chosen for the workload, not by default.",
+          "I design each system around the job in front of it, rather than forcing the job into a template. On a live AI platform I built, that meant shaping it so many AI assistants could work at the same time — fast, and without tripping over each other.",
       },
       {
-        heading: "Measure, then decide",
+        heading: "I decide with evidence, not opinion",
         detail:
-          "Ship decisions backed by numbers: raised currency-detection accuracy 55%→79% and document detection 80%→94% on SMARTON, and lifted activity-detection accuracy 30%→65% by moving from LSTM to pretrained MMAction2 — measured gains, not preference.",
+          "When I improve something, I can show the numbers. On one product I raised accuracy from 55% to 79% and from 80% to 94%; on another, from 30% to 65%. If a change doesn't measurably help, it doesn't ship.",
       },
       {
-        heading: "Work below the framework line",
+        heading: "I handle the deep technical plumbing",
         detail:
-          "Comfortable in the infrastructure layer — cut deployment time 80% with Docker and supervisord orchestration, deployed quantized models on-device with Android teams, and ran a FastAPI alerting service on Jetson Nano hardware.",
+          "I'm comfortable in the unglamorous layer that makes software fast and reliable. I cut one system's setup-and-launch time by 80%, and got AI models running directly on phones and small edge devices — not just big servers.",
       },
       {
-        heading: "Instrument what I ship",
+        heading: "I build in visibility, not guesswork",
         detail:
-          "Instrumented the full agent graph with LangSmith tracing for flow visibility, failure diagnosis and output-quality evaluation — behind an admin-controlled on/off toggle that manages tracing cost and data sensitivity in production. Behavior measured, not assumed.",
+          "I don't launch and hope. I build in the ability to see exactly how the AI is behaving, catch problems early and check its quality — with a simple switch for admins to control running costs and protect sensitive data. Behaviour is measured, not assumed.",
       },
     ],
   },
@@ -70,29 +76,29 @@ export const practices = {
     title: "How I Work With Clients",
     items: [
       {
-        heading: "Translate ambiguous domain specs into systems",
+        heading: "I turn a rough idea into a working system",
         detail:
-          "Built a two-pass Gemini summarization architecture for civil-engineering specification documents — turning dense, non-technical client material into a usable knowledge pipeline.",
+          "You don't need a polished spec to start. I take a messy, real-world problem — even dense, non-technical material — and turn it into something that works. On my flagship build, that meant pulling together 46+ business systems and 10,000+ product specs so staff could get answers just by asking in plain language.",
       },
       {
-        heading: "Scope for the constraint that matters",
+        heading: "I build it so your team can actually use it",
         detail:
-          "Picked CPU-only OCR backends and admin-gated observability specifically because that's what the client's infrastructure and governance actually required — not the highest-spec option on paper.",
+          "The tools I ship are made for real people, not engineers. On that same platform, non-technical staff create and monitor their own AI assistants from a simple screen — no code, and no need to understand the machinery underneath.",
       },
       {
-        heading: "Communicate in the client's terms",
+        heading: "I fit the solution to your real constraints",
         detail:
-          "Actively closing the customer-facing communication gap for Forward Deployment Engineer–style work: framing technical trade-offs in terms of business outcomes, not just model metrics.",
+          "I scope to what your business, budget and rules actually require — not the most expensive option on paper. That includes giving your admins a simple on/off control over running costs and how sensitive data is handled.",
       },
       {
-        heading: "Propose, don't just execute",
+        heading: "I talk in outcomes, not jargon",
         detail:
-          "Built a freelance proposal strategy positioning multi-agent platform experience directly against client problems — comfortable owning the pitch, not only the delivery.",
+          "I frame every trade-off in terms that matter to you — time, cost and risk — instead of technical metrics. You always know what a decision means for your business, not just for the code.",
       },
       {
-        heading: "Stay reachable through delivery",
+        heading: "One point of contact, start to finish",
         detail:
-          "End-to-end ownership means being the same point of contact from architecture review to post-deployment QA — no handoff gaps for the client to manage.",
+          "From the first conversation to after go-live, you work with one person who owns the whole thing — no handoffs, no gaps for you to manage. And it ships: I've cut a platform's deployment time by 80% to get clients live faster.",
       },
     ],
   },
@@ -393,7 +399,7 @@ export const affiliates = [
 export const faqs = [
   {
     q: "Who is Yogesh Modi?",
-    a: "A Senior Software Engineer (AI/ML) at Mindfire Solutions, based in Ahmedabad, India, with 3+ years of production experience architecting, building, scaling and delivering AI/ML systems for enterprise clients — agentic AI, generative AI, computer vision and applied ML.",
+    a: "A Senior Software Engineer (AI/ML) at Mindfire Solutions, based in Ahmedabad, India, with 5 years of overall experience architecting, building, scaling and delivering AI/ML systems for enterprise clients — agentic AI, generative AI, computer vision and applied ML.",
   },
   {
     q: "What does Yogesh build?",
@@ -413,7 +419,7 @@ export const faqs = [
   },
   {
     q: "Is Yogesh open to new opportunities?",
-    a: "Yes, on two fronts. For teams hiring: I'm open to senior AI/ML Systems Architect & Engineer roles across agentic AI, generative AI, computer vision and applied ML — backed by 3+ years shipping production systems and, over the last two years, leading stakeholder communication and guiding small cross-functional teams across web, backend, Android and AI. For clients: I take on select contracting and consulting engagements end-to-end — architecture, delivery, and coordinating the people around it — when you need a single owner who can both build the system and manage the collaboration and stakeholders around it.",
+    a: "Yes, on two fronts. For teams hiring: I'm open to senior AI/ML Systems Architect & Engineer roles across agentic AI, generative AI, computer vision and applied ML — backed by 5 years of overall experience and, over the last two years, leading stakeholder communication and guiding small cross-functional teams across web, backend, Android and AI. For clients: I take on select contracting and consulting engagements end-to-end — architecture, delivery, and coordinating the people around it — when you need a single owner who can both build the system and manage the collaboration and stakeholders around it.",
   },
   {
     q: "How can I contact Yogesh?",
