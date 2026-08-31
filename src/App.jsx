@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Affiliates from "./components/Affiliates";
 import Skills from "./components/Skills";
+import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 
@@ -22,6 +23,7 @@ export default function App() {
         <Projects />
         <Affiliates />
         <Skills />
+        <Testimonials />
         <FAQ />
       </main>
 

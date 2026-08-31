@@ -1,4 +1,4 @@
-import { experience, education, certifications } from "../data/content";
+import { caseStudies, education, certifications } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
 
 export default function Experience() {
@@ -7,33 +7,34 @@ export default function Experience() {
     <section id="experience" className="section experience" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">Experience</span>
-          <h2 className="section-title">Track record</h2>
+          <span className="eyebrow">Track Record</span>
+          <h2 className="section-title">Problems I've solved</h2>
         </div>
 
-        <div className="timeline">
-          {experience.map((e) => (
-            <div className="timeline-row" key={`${e.role}-${e.org}`} data-reveal>
-              <span className="timeline-period">{e.period}</span>
-              <div className="timeline-body">
-                <h3 className="timeline-role">{e.role}</h3>
-                <p className="timeline-org">{e.org}</p>
-                <ul className="timeline-bullets">
-                  {e.bullets.map((b) => (
-                    <li key={b.lead}>
-                      <strong>{b.lead}:</strong> {b.detail}
-                    </li>
-                  ))}
-                </ul>
-                <div className="timeline-tags">
-                  {e.tags.map((t) => (
-                    <span className="tag" key={t}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
+        <div className="cases">
+          {caseStudies.map((c) => (
+            <article className="case-study" key={c.title} data-reveal>
+              <p className="case-title">{c.title}</p>
+              <div className="case-part">
+                <span className="case-label">Problem</span>
+                <p className="case-text">{c.problem}</p>
               </div>
-            </div>
+              <div className="case-part">
+                <span className="case-label">Approach</span>
+                <p className="case-text">{c.approach}</p>
+              </div>
+              <div className="case-part">
+                <span className="case-label case-label-impact">Impact</span>
+                <p className="case-text case-text-impact">{c.impact}</p>
+              </div>
+              <div className="case-tags">
+                {c.tags.map((t) => (
+                  <span className="tag" key={t}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
 
@@ -65,67 +66,70 @@ export default function Experience() {
       </div>
 
       <style>{`
-        .timeline {
+        .cases {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .case-study {
+          max-width: 74ch;
+          padding: clamp(1.75rem, 4vw, 2.5rem) 0;
           border-top: 1px solid var(--border-soft);
         }
 
-        .timeline-row {
-          display: grid;
-          grid-template-columns: 140px 1fr;
-          gap: clamp(1.5rem, 4vw, 3rem);
-          padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+        .case-study:last-child {
           border-bottom: 1px solid var(--border-soft);
         }
 
-        @media (max-width: 640px) {
-          .timeline-row {
+        .case-title {
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: clamp(1.15rem, 2vw, 1.4rem);
+          margin-bottom: 1.4rem;
+        }
+
+        .case-part {
+          display: grid;
+          grid-template-columns: 92px 1fr;
+          gap: 1rem;
+          margin-bottom: 0.9rem;
+        }
+
+        @media (max-width: 520px) {
+          .case-part {
             grid-template-columns: 1fr;
-            gap: 0.5rem;
+            gap: 0.25rem;
           }
         }
 
-        .timeline-period {
-          font-size: 0.85rem;
-          font-weight: 600;
+        .case-label {
+          font-size: 0.68rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
           color: var(--fg-faint);
+          padding-top: 0.15rem;
         }
 
-        .timeline-role {
-          font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-          margin-bottom: 0.35rem;
-        }
-
-        .timeline-org {
-          font-size: 0.88rem;
-          color: var(--fg-faint);
-          margin-bottom: 1rem;
-        }
-
-        .timeline-bullets {
-          list-style: none;
-          margin: 0 0 1.25rem;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-          max-width: 68ch;
-        }
-
-        .timeline-bullets li {
-          color: var(--fg-soft);
-          font-size: 0.94rem;
-          line-height: 1.6;
-        }
-
-        .timeline-bullets strong {
+        .case-label-impact {
           color: var(--fg);
           font-weight: 600;
         }
 
-        .timeline-tags {
+        .case-text {
+          color: var(--fg-soft);
+          font-size: 0.92rem;
+          line-height: 1.6;
+        }
+
+        .case-text-impact {
+          color: var(--fg);
+        }
+
+        .case-tags {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
+          margin-top: 1.4rem;
         }
 
         .credentials {

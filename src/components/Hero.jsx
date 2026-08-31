@@ -55,11 +55,13 @@ export default function Hero() {
 
         .hero-eyebrow {
           margin-bottom: 1.25rem;
+          text-shadow: 0 0 16px color-mix(in srgb, var(--fg) 30%, transparent);
         }
 
         .hero-name {
           font-size: clamp(2.75rem, 7vw, 4.75rem);
           margin-bottom: 0.6rem;
+          text-shadow: 0 0 26px color-mix(in srgb, var(--fg) 22%, transparent);
         }
 
         .hero-tagline {
