@@ -79,8 +79,12 @@ All SEO metadata is **static in `index.html`'s `<head>`** so crawlers get it
 without executing JS (the app itself is client-rendered React).
 
 - **Title / description / keywords / author** meta.
-- **`<link rel="canonical">`** → `https://yogeshmodi.in/` (apex domain — see
-  Handoff if you'd rather use `www`).
+- **`<link rel="canonical">`** → `https://www.yogeshmodi.in/`. **This must match
+  the host Vercel actually serves.** The live deployment serves on **`www`** and
+  301-redirects the apex → `www`, so all SEO URLs (canonical, og:url, sitemap
+  `<loc>`, robots `Sitemap:`, JSON-LD) use `www`. If you ever flip Vercel to make
+  the apex primary, update all of those to the apex too, or Google will see the
+  canonical as a redirect and refuse to index it.
 - **`<meta name="robots">`** → `index, follow, max-image-preview:large, …`
   (nothing on this single public page is intentionally noindexed).
 - **Open Graph + Twitter** cards, using `public/og-image.jpg` (1200×630).
@@ -143,8 +147,9 @@ link via `profile.calendly` in `content.js`.
 1. Push to a GitHub repo (or `npx vercel` from this folder).
 2. On [vercel.com](https://vercel.com), **Import Project** — Vite is
    auto-detected; `vercel.json` sets the build command, output dir and HSTS.
-3. **Settings → Domains** → add `yogeshmodi.in` (and `www` if wanted). Set one as
-   the canonical and redirect the other so it matches the `<link rel=canonical>`.
+3. **Settings → Domains** → the live setup serves on **`www.yogeshmodi.in`** with
+   the apex `yogeshmodi.in` redirecting to it. Keep `www` as the primary so it
+   matches the `<link rel=canonical>` (which points at `www`).
 4. Add the DNS records Vercel shows at your registrar (Hostinger). SSL is issued
    automatically once the domain verifies.
 
