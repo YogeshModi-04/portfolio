@@ -60,16 +60,15 @@ export default function About() {
 
         .about-photo {
           width: 100%;
-          max-width: 210px;
-          aspect-ratio: 4 / 5;
-          object-fit: cover;
-          object-position: top center;
+          max-width: 340px;
           border-radius: var(--radius);
           border: 1px solid var(--border-soft);
           align-self: flex-start;
         }
 
         .about-photo-placeholder {
+          max-width: 210px;
+          aspect-ratio: 4 / 5;
           display: flex;
           align-items: center;
           justify-content: center;
