@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yogeshmodi.in/sitemap.xml
+Sitemap: https://www.yogeshmodi.in/sitemap.xml
