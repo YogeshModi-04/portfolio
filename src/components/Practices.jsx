@@ -13,7 +13,7 @@ export default function Practices() {
         <ul className="practice-list" data-reveal>
           {practices.items.map((item) => (
             <li className="practice-item" key={item.heading}>
-              <p className="practice-heading">{item.heading}</p>
+              <h3 className="practice-heading">{item.heading}</h3>
               <p className="practice-detail">{item.detail}</p>
             </li>
           ))}
@@ -62,8 +62,10 @@ export default function Practices() {
         }
 
         .practice-heading {
+          font-family: var(--font-body);
           font-weight: 600;
           font-size: 1.08rem;
+          letter-spacing: 0;
           margin-bottom: 0.5rem;
         }
 

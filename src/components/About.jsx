@@ -19,7 +19,15 @@ export default function About() {
 
           <div className="about-side">
             {profile.photoUrl ? (
-              <img className="about-photo" src={profile.photoUrl} alt={profile.fullName} />
+              <img
+                className="about-photo"
+                src={profile.photoUrl}
+                alt={`${profile.fullName} — ${profile.role}`}
+                width="1006"
+                height="930"
+                loading="lazy"
+                decoding="async"
+              />
             ) : (
               <div className="about-photo about-photo-placeholder">
                 <span>{profile.initials}</span>
@@ -61,6 +69,7 @@ export default function About() {
         .about-photo {
           width: 100%;
           max-width: 340px;
+          height: auto;
           border-radius: var(--radius);
           border: 1px solid var(--border-soft);
           align-self: flex-start;

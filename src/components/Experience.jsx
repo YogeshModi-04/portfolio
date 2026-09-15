@@ -13,7 +13,7 @@ export default function Experience() {
         <div className="cases">
           {caseStudies.map((c) => (
             <article className="case-study" key={c.title} data-reveal>
-              <p className="case-title">{c.title}</p>
+              <h3 className="case-title">{c.title}</h3>
               <div className="case-part">
                 <span className="case-label">Problem</span>
                 <p className="case-text">{c.problem}</p>
