@@ -1,4 +1,4 @@
-import headshot from "../assets/headshot.jpg";
+import headshot from "../assets/headshot.png";
 
 export const profile = {
   name: "Yogesh Modi",
@@ -27,11 +27,10 @@ export const about = {
   statement:
     "I architect, build, scale and deliver AI/ML systems that ship — not demos. Five years of experience overall — spanning agentic and generative AI, computer vision and applied ML — taken from architecture through QA to enterprise deployment.",
   bio: [
-    "I'm a Senior AI/ML Engineer at Mindfire Solutions. I take AI systems from a rough, real-world problem all the way to production — running for actual businesses, not sitting in a notebook.",
-    "My core is agentic and generative AI: multi-agent orchestration and retrieval-augmented generation (RAG), built on LangGraph and the A2A protocol, with retrieval across vector databases like Qdrant, FAISS, Pinecone and Weaviate.",
-    "I engineer the backend that holds it together — distributed, asynchronous FastAPI services in modular-monolith and microservices patterns — so many AI agents can run at once, quickly and reliably.",
-    "I work across the wider ML space too: fine-tuning language models such as BERT and LLaMA with LoRA/PEFT, and shipping computer-vision models to production — usually under real hardware and cost limits, not ideal lab conditions.",
-    "I run all of this on both AWS and GCP with Docker and CI/CD, so the cloud is a project decision, not a limitation. And I stay close to the business side — owning timelines and turning technical trade-offs into outcomes stakeholders can act on.",
+    "Hi — I'm Yogesh Modi, an AI/ML architect and consultant. I take AI from a rough, real-world problem all the way to production for an actual business — owned end to end, and never left as a demo that falls apart after the pitch.",
+    "My path started during my B.Tech in Information Technology and clicked with my first real build in an internship — machine learning and deep learning combined for image segmentation and prediction. I went pro as an AI Engineer at Sunbots Innovations LLP, shipping optimized models across the company's products and client projects, mentoring junior engineers, and working directly with clients to understand what they actually needed.",
+    "I focus on outcomes I can point to: computer-vision models running on-device in assistive smart-glasses used by thousands, a model's real-world accuracy more than doubled, and a platform's deployment time cut by around 80%. My rule is simple — if a change doesn't measurably help, it doesn't ship.",
+    "Today my core is agentic and generative AI — multi-agent orchestration and RAG on LangGraph and the A2A protocol — backed by distributed FastAPI services, model fine-tuning (BERT, LLaMA, LoRA/PEFT), and computer vision shipped under real hardware limits, across AWS and GCP. Bring me a messy, half-formed problem and I'll turn it into a system you can trust — as the single person accountable for it, from the first call to long after go-live.",
   ],
   facts: [
     { label: "Role", value: "Senior SWE, AI/ML" },
@@ -42,66 +41,34 @@ export const about = {
 };
 
 export const practices = {
-  engineering: {
-    title: "How I Engineer",
-    items: [
-      {
-        heading: "I own it from start to finish",
-        detail:
-          "I run the whole thing — from the first rough problem through design, testing, launch and the client demo — including timelines and keeping everyone in the loop. What I deliver is real software running in production for real companies, not a demo that falls apart after the pitch.",
-      },
-      {
-        heading: "I shape the system to fit the job",
-        detail:
-          "I design each system around the job in front of it, rather than forcing the job into a template. On a live AI platform I built, that meant shaping it so many AI assistants could work at the same time — fast, and without tripping over each other.",
-      },
-      {
-        heading: "I decide with evidence, not opinion",
-        detail:
-          "When I improve something, I can show the numbers. On one product I raised accuracy from 55% to 79% and from 80% to 94%; on another, from 30% to 65%. If a change doesn't measurably help, it doesn't ship.",
-      },
-      {
-        heading: "I handle the deep technical plumbing",
-        detail:
-          "I'm comfortable in the unglamorous layer that makes software fast and reliable. I cut one system's setup-and-launch time by 80%, and got AI models running directly on phones and small edge devices — not just big servers.",
-      },
-      {
-        heading: "I build in visibility, not guesswork",
-        detail:
-          "I don't launch and hope. I build in the ability to see exactly how the AI is behaving, catch problems early and check its quality — with a simple switch for admins to control running costs and protect sensitive data. Behaviour is measured, not assumed.",
-      },
-    ],
-  },
-  client: {
-    title: "How I Work With Clients",
-    items: [
-      {
-        heading: "I turn a rough idea into a working system",
-        detail:
-          "You don't need a polished spec to start. I take a messy, real-world problem — even dense, non-technical material — and turn it into something that works. On my flagship build, that meant pulling together 46+ business systems and 10,000+ product specs so staff could get answers just by asking in plain language.",
-      },
-      {
-        heading: "I build it so your team can actually use it",
-        detail:
-          "The tools I ship are made for real people, not engineers. On that same platform, non-technical staff create and monitor their own AI assistants from a simple screen — no code, and no need to understand the machinery underneath.",
-      },
-      {
-        heading: "I fit the solution to your real constraints",
-        detail:
-          "I scope to what your business, budget and rules actually require — not the most expensive option on paper. That includes giving your admins a simple on/off control over running costs and how sensitive data is handled.",
-      },
-      {
-        heading: "I talk in outcomes, not jargon",
-        detail:
-          "I frame every trade-off in terms that matter to you — time, cost and risk — instead of technical metrics. You always know what a decision means for your business, not just for the code.",
-      },
-      {
-        heading: "One point of contact, start to finish",
-        detail:
-          "From the first conversation to after go-live, you work with one person who owns the whole thing — no handoffs, no gaps for you to manage. And it ships: I've cut a platform's deployment time by 80% to get clients live faster.",
-      },
-    ],
-  },
+  title: "How I work",
+  items: [
+    {
+      heading: "I start with your problem, not a template",
+      detail:
+        "You don't need a polished spec to begin. I take a messy, real-world problem — even dense, non-technical material — and architect a solution around what your business actually needs, instead of forcing it into an off-the-shelf tool. On my flagship build that meant pulling 46+ business systems and 10,000+ product specs into one place, so staff could get answers just by asking in plain language.",
+    },
+    {
+      heading: "I build it so your team can actually use it",
+      detail:
+        "The tools I ship are made for real people, not engineers. On that same platform, non-technical staff create and monitor their own AI assistants from a simple screen — no code, and no need to understand the machinery underneath.",
+    },
+    {
+      heading: "I fit the solution to your real constraints",
+      detail:
+        "I scope to what your business, budget and rules actually require — not the most expensive option on paper. That includes giving your admins simple control over running costs and how sensitive data is handled.",
+    },
+    {
+      heading: "I decide with evidence, and can prove it",
+      detail:
+        "When I improve something, I can show you the numbers. I've raised model accuracy from 55% to 79%, more than doubled another from 30% to 65%, and cut a platform's deployment time by 80%. If a change doesn't measurably help, it doesn't ship.",
+    },
+    {
+      heading: "One owner, from first call to long after go-live",
+      detail:
+        "You work with one person who owns the whole thing — architecture, delivery, testing and the demo — and who frames every trade-off in time, cost and risk, not jargon. No handoffs, no gaps for you to manage: just a system that ships and keeps running.",
+    },
+  ],
 };
 
 export const caseStudies = [
@@ -337,7 +304,7 @@ export const affiliates = [
 export const faqs = [
   {
     q: "Who is Yogesh Modi?",
-    a: "A Senior Software Engineer (AI/ML) at Mindfire Solutions, based in Ahmedabad, India, with 5 years of overall experience architecting, building, scaling and delivering AI/ML systems for enterprise clients — agentic AI, generative AI, computer vision and applied ML.",
+    a: "An AI/ML architect and consultant based in Ahmedabad, India, with 5 years of overall experience architecting, building, scaling and delivering AI/ML systems for businesses and enterprise clients — agentic AI, generative AI, computer vision and applied ML.",
   },
   {
     q: "What does Yogesh build?",

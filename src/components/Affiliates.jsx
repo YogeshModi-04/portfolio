@@ -6,7 +6,7 @@ export default function Affiliates() {
   return (
     <section id="affiliates" className="section affiliates" ref={ref}>
       <div className="wrap">
-        <div className="section-head section-head-solo">
+        <div className="section-head">
           <h2 className="section-title">Products</h2>
         </div>
 
@@ -53,10 +53,6 @@ export default function Affiliates() {
       </div>
 
       <style>{`
-        .section-head-solo {
-          justify-content: flex-end;
-        }
-
         .affiliates-list {
           display: flex;
           flex-direction: column;

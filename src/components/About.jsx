@@ -7,8 +7,7 @@ export default function About() {
     <section id="about" className="section about" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">About</span>
-          <h2 className="section-title">Background</h2>
+          <h2 className="section-title">About</h2>
         </div>
 
         <div className="about-grid" data-reveal>
@@ -26,15 +25,6 @@ export default function About() {
                 <span>{profile.initials}</span>
               </div>
             )}
-
-            <dl className="about-facts">
-              {about.facts.map((f) => (
-                <div className="about-fact" key={f.label}>
-                  <dt>{f.label}</dt>
-                  <dd>{f.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </div>
@@ -70,16 +60,15 @@ export default function About() {
 
         .about-photo {
           width: 100%;
-          max-width: 210px;
-          aspect-ratio: 4 / 5;
-          object-fit: cover;
-          object-position: top center;
+          max-width: 340px;
           border-radius: var(--radius);
           border: 1px solid var(--border-soft);
           align-self: flex-start;
         }
 
         .about-photo-placeholder {
+          max-width: 210px;
+          aspect-ratio: 4 / 5;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -88,41 +77,6 @@ export default function About() {
           font-weight: 700;
           font-size: clamp(2rem, 5vw, 3rem);
           color: var(--fg-faint);
-        }
-
-        .about-facts {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          margin: 0;
-          padding: 1.5rem;
-          border: 1px solid var(--border-soft);
-          border-radius: var(--radius);
-          background: var(--surface);
-        }
-
-        .about-fact {
-          display: flex;
-          justify-content: space-between;
-          gap: 1rem;
-          font-size: 0.85rem;
-          padding-bottom: 1rem;
-          border-bottom: 1px solid var(--border-soft);
-        }
-
-        .about-fact:last-child {
-          padding-bottom: 0;
-          border-bottom: none;
-        }
-
-        .about-fact dt {
-          color: var(--fg-faint);
-        }
-
-        .about-fact dd {
-          margin: 0;
-          font-weight: 500;
-          text-align: right;
         }
       `}</style>
     </section>

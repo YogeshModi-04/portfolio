@@ -1,11 +1,11 @@
-import { profile, heroMeta, about } from "../data/content";
+import { profile, about } from "../data/content";
 
 export default function Hero() {
   return (
     <header id="hero" className="hero">
       <div className="wrap hero-inner">
         <div className="hero-text">
-          <p className="eyebrow hero-eyebrow">Architecture · AI/ML Engineering · Delivery</p>
+          <p className="eyebrow hero-eyebrow">AI/ML Architect &amp; Consultant</p>
 
           <h1 className="hero-name">Yogesh Modi</h1>
 
@@ -13,7 +13,6 @@ export default function Hero() {
 
           <div className="hero-role-row">
             <p className="hero-role">{profile.role}</p>
-            <p className="hero-sub">{profile.subRole}</p>
           </div>
 
           <p className="hero-statement">{about.statement}</p>
@@ -30,15 +29,6 @@ export default function Hero() {
               Contact me
             </a>
           </div>
-        </div>
-
-        <div className="hero-meta">
-          {heroMeta.map((m) => (
-            <div className="hero-meta-item" key={m.label}>
-              <span className="hero-meta-label">{m.label}</span>
-              <span className="hero-meta-value">{m.value}</span>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -102,32 +92,6 @@ export default function Hero() {
           display: flex;
           flex-wrap: wrap;
           gap: 1rem;
-        }
-
-        .hero-meta {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-          gap: 1.5rem;
-          padding-top: 1.75rem;
-          border-top: 1px solid var(--border-soft);
-        }
-
-        .hero-meta-item {
-          display: flex;
-          flex-direction: column;
-          gap: 0.35rem;
-        }
-
-        .hero-meta-label {
-          font-size: 0.72rem;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--fg-faint);
-        }
-
-        .hero-meta-value {
-          font-size: 0.92rem;
-          color: var(--fg-soft);
         }
       `}</style>
     </header>

@@ -150,7 +150,7 @@ export default function Contact() {
 
         .contact-sub {
           color: var(--invert-fg-soft);
-          font-size: 1.02rem;
+          font-size: 1.2rem;
           max-width: 48ch;
           margin-bottom: clamp(2rem, 4vw, 2.5rem);
         }
@@ -183,7 +183,7 @@ export default function Contact() {
 
         .contact-method-label {
           display: block;
-          font-size: 0.72rem;
+          font-size: 0.78rem;
           letter-spacing: 0.06em;
           text-transform: uppercase;
           color: var(--invert-fg-soft);
@@ -192,7 +192,7 @@ export default function Contact() {
 
         .contact-method-value {
           display: block;
-          font-size: 0.95rem;
+          font-size: 1.1rem;
         }
 
         a.contact-method:hover .contact-method-icon {
@@ -284,12 +284,12 @@ export default function Contact() {
         .contact-schedule-title {
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 1.35rem;
+          font-size: 1.55rem;
         }
 
         .contact-schedule-sub {
           color: var(--invert-fg-soft);
-          font-size: 0.95rem;
+          font-size: 1.08rem;
           line-height: 1.6;
           max-width: 34ch;
         }
@@ -300,7 +300,7 @@ export default function Contact() {
         }
 
         .contact-schedule-alt {
-          font-size: 0.85rem;
+          font-size: 0.98rem;
           color: var(--invert-fg-soft);
           text-decoration: none;
           border-bottom: 1px solid var(--invert-fg-soft);
@@ -317,7 +317,7 @@ export default function Contact() {
           padding-top: 1rem;
           width: 100%;
           border-top: 1px solid var(--invert-fg-soft);
-          font-size: 0.78rem;
+          font-size: 0.9rem;
           color: var(--invert-fg-soft);
           text-align: center;
         }

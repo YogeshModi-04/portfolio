@@ -6,7 +6,6 @@ const SECTIONS = [
   { id: "experience", label: "Track Record" },
   { id: "projects", label: "Work" },
   { id: "affiliates", label: "Products" },
-  { id: "skills", label: "Skills" },
   { id: "testimonials", label: "Testimonials" },
   { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contact" },
@@ -15,6 +14,7 @@ const SECTIONS = [
 export default function Nav({ mark }) {
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -36,15 +36,29 @@ export default function Nav({ mark }) {
 
   return (
     <nav className={`nav${scrolled ? " is-scrolled" : ""}`}>
-      <a className="nav-mark" href="#hero">
+      <a className="nav-mark" href="#hero" onClick={() => setMenuOpen(false)}>
         {mark}
       </a>
-      <div className="nav-links">
+
+      <button
+        type="button"
+        className={`nav-toggle${menuOpen ? " is-open" : ""}`}
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+      </button>
+
+      <div className={`nav-links${menuOpen ? " is-open" : ""}`}>
         {SECTIONS.map((s) => (
           <a
             key={s.id}
             href={`#${s.id}`}
             className={`nav-link${active === s.id ? " is-active" : ""}`}
+            onClick={() => setMenuOpen(false)}
           >
             {s.label}
           </a>
