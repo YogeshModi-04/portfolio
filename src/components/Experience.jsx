@@ -1,4 +1,4 @@
-import { caseStudies, education, certifications } from "../data/content";
+import { caseStudies, certifications } from "../data/content";
 import { useReveal } from "../hooks/useReveal";
 
 export default function Experience() {
@@ -7,7 +7,6 @@ export default function Experience() {
     <section id="experience" className="section experience" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">Track Record</span>
           <h2 className="section-title">Problems I've solved</h2>
         </div>
 
@@ -39,15 +38,6 @@ export default function Experience() {
         </div>
 
         <div className="credentials" data-reveal>
-          <div className="credentials-col">
-            <span className="credentials-label">Education</span>
-            <div className="credential-item">
-              <p className="credentials-main">{education.degree}</p>
-              <p className="credentials-sub">
-                {education.school} · {education.period} · {education.detail}
-              </p>
-            </div>
-          </div>
           <div className="credentials-col">
             <span className="credentials-label">Certifications</span>
             {certifications.map((c) => (

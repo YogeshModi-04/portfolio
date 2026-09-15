@@ -16,7 +16,6 @@ export default function Testimonials() {
     <section id="testimonials" className="section testimonials" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">Testimonials</span>
           <h2 className="section-title">What people say</h2>
         </div>
 

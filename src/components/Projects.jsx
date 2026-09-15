@@ -7,7 +7,6 @@ export default function Projects() {
     <section id="projects" className="section projects" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">Case Studies</span>
           <h2 className="section-title">Selected builds</h2>
         </div>
 
@@ -48,6 +47,28 @@ export default function Projects() {
           flex-direction: column;
           gap: 0.9rem;
           padding: 1.75rem;
+          opacity: 0;
+          transform: translateX(-48px);
+        }
+
+        /* Staggered slide-in as each card enters view (matches testimonials) */
+        .project-card.is-visible {
+          animation: project-slide 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .project-card.is-visible:nth-child(even) {
+          animation-delay: 0.12s;
+        }
+
+        @keyframes project-slide {
+          from {
+            opacity: 0;
+            transform: translateX(-48px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
 
         .project-card-top {

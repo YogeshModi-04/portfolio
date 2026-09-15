@@ -7,7 +7,6 @@ export default function FAQ() {
     <section id="faq" className="section faq" ref={ref}>
       <div className="wrap">
         <div className="section-head">
-          <span className="eyebrow">FAQ</span>
           <h2 className="section-title">Quick answers</h2>
         </div>
 
