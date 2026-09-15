@@ -86,7 +86,7 @@ export default function Contact() {
               </svg>
             </span>
 
-            <p className="contact-schedule-title">Book a 30-minute call</p>
+            <h3 className="contact-schedule-title">Book a 30-minute call</h3>
             <p className="contact-schedule-sub">
               Grab a time that works for you and we'll talk it through over Google Meet — what
               you're building, and how I can help.

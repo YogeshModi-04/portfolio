@@ -1,4 +1,4 @@
-import headshot from "../assets/headshot.png";
+import headshot from "../assets/headshot.jpg";
 
 export const profile = {
   name: "Yogesh Modi",
