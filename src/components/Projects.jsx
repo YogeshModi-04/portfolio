@@ -13,7 +13,7 @@ export default function Projects() {
         <div className="projects-grid">
           {projects.map((p) => (
             <article
-              className={`project-card card${p.image ? " project-card-wide" : ""}`}
+              className="project-card card"
               key={p.id}
               data-reveal="slide"
             >
@@ -68,8 +68,17 @@ export default function Projects() {
       <style>{`
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: 1fr;
           gap: 1.5rem;
+        }
+
+        /* Two up from tablet, so four builds land as a clean 2x2 and the
+           diagrams stay card-sized rather than full-bleed. An auto-fit track
+           would give three columns on wide screens and leave a hole. */
+        @media (min-width: 768px) {
+          .projects-grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
 
         .project-card {
@@ -98,15 +107,6 @@ export default function Projects() {
           to {
             opacity: 1;
             transform: translateX(0);
-          }
-        }
-
-        /* A project with a diagram spans two columns so the labels stay
-           legible. Only applied from 768px up, where the grid is guaranteed
-           at least two tracks -- below that it stays a single column. */
-        @media (min-width: 768px) {
-          .project-card-wide {
-            grid-column: span 2;
           }
         }
 
