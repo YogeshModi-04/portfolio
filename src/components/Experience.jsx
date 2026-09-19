@@ -14,6 +14,25 @@ export default function Experience() {
           {caseStudies.map((c) => (
             <article className="case-study" key={c.title} data-reveal>
               <h3 className="case-title">{c.title}</h3>
+              {c.image && (
+                <a
+                  className="figure case-figure"
+                  href={c.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${c.title} — open the full-size architecture diagram`}
+                >
+                  <img
+                    src={c.image}
+                    alt={c.imageAlt}
+                    width={c.imageWidth}
+                    height={c.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="figure-cap">Architecture diagram — view full size &#8599;</span>
+                </a>
+              )}
               <div className="case-part">
                 <span className="case-label">Problem</span>
                 <p className="case-text">{c.problem}</p>
@@ -62,9 +81,28 @@ export default function Experience() {
         }
 
         .case-study {
-          max-width: 74ch;
           padding: clamp(1.75rem, 4vw, 2.5rem) 0;
           border-top: 1px solid var(--border-soft);
+        }
+
+        /* Cap the prose at a readable measure, but let the diagram span the
+           full section width -- these schematics are too dense to survive
+           being squeezed into 74ch. */
+        .case-title,
+        .case-part,
+        .case-tags {
+          max-width: 74ch;
+        }
+
+        .case-figure {
+          margin: 1.25rem 0 0.4rem;
+        }
+
+        /* A modest breakout past the 74ch prose, not a full-bleed one: enough
+           extra width to keep the schematic labels readable without the image
+           towering over the copy beneath it. */
+        .case-figure img {
+          max-width: 820px;
         }
 
         .case-study:last-child {

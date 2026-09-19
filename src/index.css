@@ -286,14 +286,61 @@ img {
   }
 }
 
+/* ---------- Figure (shared: project cards + case studies) ---------- */
+/* A diagram or photo that links to its own full-size original. */
+.figure {
+  display: block;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-soft);
+}
+
+.figure-cap {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--fg-faint);
+}
+
+.figure:hover .figure-cap {
+  color: var(--fg);
+  text-decoration: underline;
+}
+
+/* Product shots are transparent PNGs, so they carry no canvas of their own.
+   Give them the same dark panel the diagrams render on, at the same width, so
+   one card doesn't read as the odd one out. Fixed dark value on purpose -- it
+   must not follow the theme, or the product loses its backdrop in light mode. */
+.figure--photo img {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: radial-gradient(
+    ellipse 58% 62% at 50% 50%,
+    #2b2b2b 0%,
+    #141414 55%,
+    #0a0a0a 100%
+  );
+  padding: clamp(1rem, 3vw, 2.25rem);
+}
+
 /* ---------- Reveal on scroll ---------- */
-.reveal {
+/* useReveal() adds .is-visible to every [data-reveal] once it enters the
+   viewport. Cards with their own entrance animation (Projects, Testimonials)
+   opt out via data-reveal="slide" so this fade-up doesn't fight their
+   keyframes. */
+[data-reveal]:not([data-reveal="slide"]) {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.is-visible {
+[data-reveal]:not([data-reveal="slide"]).is-visible {
   opacity: 1;
   transform: translateY(0);
 }

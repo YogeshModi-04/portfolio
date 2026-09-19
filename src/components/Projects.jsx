@@ -12,7 +12,37 @@ export default function Projects() {
 
         <div className="projects-grid">
           {projects.map((p) => (
-            <article className="project-card card" key={p.id} data-reveal>
+            <article
+              className={`project-card card${p.image ? " project-card-wide" : ""}`}
+              key={p.id}
+              data-reveal="slide"
+            >
+              {p.image && (
+                <a
+                  className={`figure${
+                    p.imageKind === "photo" ? " figure--photo" : ""
+                  }`}
+                  href={p.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${p.title} — open the full-size ${
+                    p.imageKind === "photo" ? "product photo" : "architecture diagram"
+                  }`}
+                >
+                  <img
+                    src={p.image}
+                    alt={p.imageAlt}
+                    width={p.imageWidth}
+                    height={p.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="figure-cap">
+                    {p.imageKind === "photo" ? "Product photo" : "Architecture diagram"} — view
+                    full size &#8599;
+                  </span>
+                </a>
+              )}
               <div className="project-card-top">
                 <span className="project-tagline">{p.tagline}</span>
               </div>
@@ -68,6 +98,15 @@ export default function Projects() {
           to {
             opacity: 1;
             transform: translateX(0);
+          }
+        }
+
+        /* A project with a diagram spans two columns so the labels stay
+           legible. Only applied from 768px up, where the grid is guaranteed
+           at least two tracks -- below that it stays a single column. */
+        @media (min-width: 768px) {
+          .project-card-wide {
+            grid-column: span 2;
           }
         }
 

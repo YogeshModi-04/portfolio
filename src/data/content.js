@@ -1,13 +1,24 @@
-import headshot from "../assets/headshot.jpg";
+// Served from public/images/ rather than imported. Importing would inline each
+// file into the single-file build (assetsInlineLimit is effectively unlimited),
+// so every visual shipped before first paint. As plain URLs the browser fetches
+// them on demand and loading="lazy" actually takes effect.
+// Paths are relative so a built dist/ folder works opened directly, not just at
+// a domain root.
+const headshot = "./images/headshot.jpg";
+const shoppingAssistantDiagram = "./images/agentic-shopping-assistant.svg";
+const specSummarizerDiagram = "./images/two-pass-spec-summarizer.svg";
+const sqlAgentDiagram = "./images/natural-language-sql-agent.svg";
+const smartonGlasses = "./images/smarton-glasses.png";
+const multiAgentPlatformDiagram = "./images/enterprise-multi-agent-platform.svg";
+const smartonVisionDiagram = "./images/smarton-vision-accuracy.svg";
+const theftDetectionDiagram = "./images/theft-detection-activity.svg";
 
 export const profile = {
   name: "Yogesh Modi",
   fullName: "Yogesh Shivkumar Modi",
   role: "AI/ML Systems Architect & Engineer",
   tagline: "Turning ambiguous problems into systems that ship.",
-  subRole: "Senior Software Engineer, AI/ML — Mindfire Solutions",
   location: "Ahmedabad, Gujarat, India",
-  experience: "3+ yrs",
   email: "skmodiyogesh@gmail.com",
   github: "https://github.com/YogeshModi-04",
   githubHandle: "YogeshModi-04",
@@ -17,12 +28,6 @@ export const profile = {
   photoUrl: headshot,
 };
 
-export const heroMeta = [
-  { label: "Based in", value: "Ahmedabad, IN" },
-  { label: "Experience", value: "5 years overall" },
-  { label: "Focus", value: "Architect · Build · Scale · Deliver" },
-];
-
 export const about = {
   statement:
     "I architect, build, scale and deliver AI/ML systems that ship — not demos. Five years of experience overall — spanning agentic and generative AI, computer vision and applied ML — taken from architecture through QA to enterprise deployment.",
@@ -31,12 +36,6 @@ export const about = {
     "My path started during my B.Tech in Information Technology and clicked with my first real build in an internship — machine learning and deep learning combined for image segmentation and prediction. I went pro as an AI Engineer at Sunbots Innovations LLP, shipping optimized models across the company's products and client projects, mentoring junior engineers, and working directly with clients to understand what they actually needed.",
     "I focus on outcomes I can point to: computer-vision models running on-device in assistive smart-glasses used by thousands, a model's real-world accuracy more than doubled, and a platform's deployment time cut by around 80%. My rule is simple — if a change doesn't measurably help, it doesn't ship.",
     "Today my core is agentic and generative AI — multi-agent orchestration and RAG on LangGraph and the A2A protocol — backed by distributed FastAPI services, model fine-tuning (BERT, LLaMA, LoRA/PEFT), and computer vision shipped under real hardware limits, across AWS and GCP. Bring me a messy, half-formed problem and I'll turn it into a system you can trust — as the single person accountable for it, from the first call to long after go-live.",
-  ],
-  facts: [
-    { label: "Role", value: "Senior SWE, AI/ML" },
-    { label: "Company", value: "Mindfire Solutions" },
-    { label: "Location", value: "Ahmedabad, Gujarat, India" },
-    { label: "Experience", value: "5 years overall" },
   ],
 };
 
@@ -81,6 +80,11 @@ export const caseStudies = [
     impact:
       "Non-technical staff now get answers by asking in plain language across 46+ systems and 10,000+ specs — and create and monitor their own agents with no code. Containerized delivery cut deployment time by 80%.",
     tags: ["Python", "A2A Protocol", "LangGraph", "RAG", "Qdrant", "FastAPI", "Angular", "Docker"],
+    image: multiAgentPlatformDiagram,
+    imageAlt:
+      "Architecture diagram: an access tier of plain-language queries, a no-code agent studio and an RBAC gate feeds a LangGraph and Gemini intent router over an A2A bus, which dispatches concurrently to five specialised agents for analytics, catalog and specs, documentation, vendor intelligence and compliance; these run on a distributed async backend with admin-gated tracing and audit trails, retrieving from a Qdrant vector knowledge base indexing 46+ sources and 10,000+ product specs. Results: 80% deployment reduction, zero-code self-service agents, 100% audit traceability.",
+    imageWidth: 1200,
+    imageHeight: 800,
   },
   {
     title: "SMARTON — On-Device Vision Accuracy",
@@ -91,6 +95,11 @@ export const caseStudies = [
     impact:
       "Currency-detection accuracy rose 55% → 79% and document detection 80% → 94%, running quantized on mobile.",
     tags: ["Python", "TensorFlow", "TFLite", "Computer Vision", "Deep Learning", "Model Fine-Tuning", "Quantization", "LangChain", "RAG"],
+    image: smartonVisionDiagram,
+    imageAlt:
+      "Three-column diagram: the bottleneck column lists offline-only operation, untrusted baselines at 55% currency and 80% document accuracy, and mobile RAM, thermal and battery limits; the architecture column shows dataset tuning and curation, FP32 to INT8 quantization for Android NPU/NNAPI execution, and a LangChain RAG document-QA layer; the metrics column shows currency detection rising 55% to 79% and document detection 80% to 94%, running quantized on mobile.",
+    imageWidth: 1100,
+    imageHeight: 680,
   },
   {
     title: "Theft Detection — Activity Recognition",
@@ -101,15 +110,13 @@ export const caseStudies = [
     impact:
       "Activity-detection accuracy more than doubled, 30% → 65%, running as a live alerting service on edge hardware.",
     tags: ["Python", "PyTorch", "MMAction2", "Ultralytics", "Computer Vision", "Deep Learning", "Model Fine-Tuning", "FastAPI", "Jetson Nano", "Docker"],
+    image: theftDetectionDiagram,
+    imageAlt:
+      "Before-and-after diagram: the legacy column shows single-frame sampling into a vanilla LSTM losing spatial context, capped at 30% accuracy; the re-engineered pipeline runs Ultralytics detectors for object localisation and spatial crops into an MMAction2 spatio-temporal video classifier, then a FastAPI alert dispatch service, all deployed as a containerised daemon on a Jetson Nano, delivering 65% accuracy.",
+    imageWidth: 1000,
+    imageHeight: 620,
   },
 ];
-
-export const education = {
-  degree: "B.Tech, Information Technology",
-  school: "Silver Oak University (GTU)",
-  period: "2019 – 2023",
-  detail: "CGPA 7.95 / 10",
-};
 
 export const certifications = [
   {
@@ -152,6 +159,12 @@ export const projects = [
     stack: ["Computer Vision", "Embedded AI", "Audio Interfaces", "Accessibility"],
     link: "https://www.getsmartonai.com/glasses",
     linkLabel: "View product",
+    image: smartonGlasses,
+    imageAlt:
+      "The SMARTON smart glasses: a matte black wayfarer-style frame with a forward-facing camera beside the left hinge, sensor openings along the brow bar, and thickened temple arms housing the battery and bone-conduction audio.",
+    imageWidth: 800,
+    imageHeight: 800,
+    imageKind: "photo",
   },
   {
     id: "02",
@@ -160,6 +173,11 @@ export const projects = [
     description:
       "A shopping chatbot system built on LangGraph with XGBoost-based product recommendations, SQLite persistence, streaming responses and modular Python packaging — architected as a real service, not a script.",
     stack: ["LangGraph", "XGBoost", "SQLite", "Python"],
+    image: shoppingAssistantDiagram,
+    imageAlt:
+      "Architecture diagram: a client streaming layer feeds a LangGraph runtime whose supervisor node routes to a context gatherer, which sends features to an XGBoost ranker; ranked items return to a synthesis node that streams tokens back to the client, with graph state checkpointed to SQLite.",
+    imageWidth: 960,
+    imageHeight: 620,
   },
   {
     id: "03",
@@ -168,6 +186,11 @@ export const projects = [
     description:
       "A Gemini-powered summarizer for civil-engineering specs using a two-pass architecture — per-document intermediate summaries rolled up into a single unified output for fast client review.",
     stack: ["Gemini", "Python", "Document AI"],
+    image: specSummarizerDiagram,
+    imageAlt:
+      "Architecture diagram: raw civil engineering specification documents feed a first pass where separate Gemini extractors summarize each document into structured intermediate JSON; those summaries fan into a second-pass roll-up synthesizer that cross-checks them and emits a single unified summary for client review.",
+    imageWidth: 1100,
+    imageHeight: 680,
   },
   {
     id: "04",
@@ -176,93 +199,11 @@ export const projects = [
     description:
       "A LangChain SQL agent over a PostgreSQL student database, using JsonOutputParser for reliable structured output — translating plain-language questions into safe, correct queries.",
     stack: ["LangChain", "PostgreSQL", "JsonOutputParser"],
-  },
-];
-
-export const skills = [
-  {
-    category: "Languages & Databases",
-    items: ["Python", "SQL", "MongoDB", "PostgreSQL", "SQLite", "Vector Databases"],
-  },
-  {
-    category: "Agentic & LLM",
-    items: [
-      "LangChain",
-      "LangGraph",
-      "A2A Protocol",
-      "MCP",
-      "RAG",
-      "Prompt Engineering",
-      "Fine-Tuning (BERT, LLaMA)",
-      "Multi-Agent Orchestration",
-      "Tool Calling",
-      "LLM Query Routing",
-    ],
-  },
-  {
-    category: "LLM Evaluation & Observability",
-    items: [
-      "LangSmith (Tracing, Monitoring, Debugging)",
-      "LLM / NLP Model Evaluation",
-      "Prompt & Retrieval Optimization",
-    ],
-  },
-  {
-    category: "Backend & Architecture",
-    items: [
-      "FastAPI",
-      "REST APIs",
-      "WebSockets",
-      "asyncio",
-      "Asynchronous & Event-Driven Design",
-      "Distributed Systems",
-      "Microservices",
-      "Modular Monolith",
-      "Role-Based Auth & Security",
-    ],
-  },
-  {
-    category: "Frontend & Interfaces",
-    items: ["Angular", "TypeScript", "REST / WebSocket API Integration", "Streamlit"],
-  },
-  {
-    category: "AI / ML Frameworks",
-    items: [
-      "PyTorch",
-      "TensorFlow",
-      "HuggingFace Transformers",
-      "PEFT / LoRA",
-      "Ultralytics",
-      "Mediapipe",
-      "TFOD",
-      "Super-Gradients",
-      "TFLite",
-      "ONNX",
-      "TensorRT",
-    ],
-  },
-  {
-    category: "Vector Databases",
-    items: ["Qdrant", "FAISS", "Pinecone", "Weaviate", "MongoDB Atlas Vector Search"],
-  },
-  {
-    category: "Cloud & DevOps",
-    items: ["AWS (SageMaker, S3, EC2)", "GCP", "Docker", "CI/CD Pipelines", "Git", "Linux"],
-  },
-  {
-    category: "Expertise",
-    items: [
-      "Generative AI",
-      "Agentic Systems",
-      "Machine Learning",
-      "Deep Learning",
-      "Computer Vision",
-      "NLP",
-      "Software Architecture & Design",
-      "Hyperparameter Tuning",
-      "Model Quantization",
-      "Stakeholder Communication",
-    ],
+    image: sqlAgentDiagram,
+    imageAlt:
+      "Architecture diagram: a plain-language question enters a LangChain agent, which combines the student database schema, the postgresql dialect and dynamic few-shot examples into a prompt; an LLM synthesizer translates the intent into SQL behind an anti-injection guard, JsonOutputParser validates the structured output, and the resulting read-only query runs against the PostgreSQL students database to return a formatted dataset.",
+    imageWidth: 1000,
+    imageHeight: 580,
   },
 ];
 

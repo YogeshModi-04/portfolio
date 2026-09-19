@@ -1,3 +1,4 @@
+import { profile } from "./data/content";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,7 +13,7 @@ import Contact from "./components/Contact";
 export default function App() {
   return (
     <>
-      <Nav mark="Yogesh Modi" />
+      <Nav mark={profile.name} />
 
       <main>
         <Hero />

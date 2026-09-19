@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%" style="background:#090a0f; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ffffff"/>
+    </marker>
+    <marker id="arrow-dim" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717a"/>
+    </marker>
+
+    <!-- Edge/Glow Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1000" height="620" fill="#090a0f"/>
+  <rect width="1000" height="620" fill="url(#grid)"/>
+
+  <!-- ================= HEADER ================= -->
+  <g transform="translate(60, 48)">
+    <rect x="0" y="0" width="112" height="22" rx="4" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1"/>
+    <text x="56" y="15" fill="#ffffff" font-size="10" font-weight="700" letter-spacing="1.5" text-anchor="middle">EDGE AI SYSTEM</text>
+    
+    <text x="0" y="52" fill="#ffffff" font-size="24" font-weight="800" letter-spacing="-0.5">THEFT DETECTION // ACTIVITY RECOGNITION</text>
+    <text x="0" y="73" fill="#a1a1aa" font-size="13" font-weight="400">High-throughput spatial detection to temporal video classification pipeline</text>
+  </g>
+
+  <!-- Impact Counter Tag (Header Right) -->
+  <g transform="translate(730, 42)">
+    <rect x="0" y="0" width="210" height="68" rx="8" fill="#18181b" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1"/>
+    <text x="20" y="28" fill="#a1a1aa" font-size="11" font-weight="600" letter-spacing="0.8">ACCURACY BOOST</text>
+    <text x="20" y="56" fill="#71717a" font-size="24" font-weight="700" text-decoration="line-through">30%</text>
+    <text x="76" y="56" fill="#ffffff" font-size="20" font-weight="400" opacity="0.6">→</text>
+    <text x="106" y="56" fill="#ffffff" font-size="28" font-weight="900">65%</text>
+    <circle cx="188" cy="24" r="4" fill="#22c55e"/>
+  </g>
+
+  <!-- ================= LEFT COLUMN: PROBLEM ================= -->
+  <g transform="translate(60, 150)">
+    <!-- Legacy Container -->
+    <rect x="0" y="0" width="230" height="420" rx="10" fill="#121318" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="4 4"/>
+    
+    <rect x="18" y="18" width="70" height="20" rx="4" fill="#27272a"/>
+    <text x="53" y="32" fill="#a1a1aa" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">LEGACY</text>
+    
+    <text x="18" y="66" fill="#ffffff" font-size="16" font-weight="700">Baseline Defect</text>
+    <text x="18" y="86" fill="#71717a" font-size="12" line-height="16">Frame-level features feeding</text>
+    <text x="18" y="102" fill="#71717a" font-size="12">unsupported sequences.</text>
+
+    <!-- Legacy Node 1: Video Input -->
+    <g transform="translate(18, 125)">
+      <rect x="0" y="0" width="194" height="60" rx="6" fill="#18181b" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+      <text x="14" y="26" fill="#a1a1aa" font-size="11" font-weight="600">RAW STREAM</text>
+      <text x="14" y="44" fill="#71717a" font-size="12">Single Frame Sampling</text>
+    </g>
+
+    <!-- Down Arrow -->
+    <path d="M 115 195 L 115 215" stroke="#71717a" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow-dim)"/>
+
+    <!-- Legacy Node 2: LSTM -->
+    <g transform="translate(18, 225)">
+      <rect x="0" y="0" width="194" height="74" rx="6" fill="#18181b" stroke="#ef4444" stroke-opacity="0.3" stroke-width="1"/>
+      <text x="14" y="26" fill="#ef4444" font-size="11" font-weight="700">VANILLA LSTM</text>
+      <text x="14" y="44" fill="#a1a1aa" font-size="12">Spatial context degradation</text>
+      <text x="14" y="60" fill="#71717a" font-size="11">High false-alarm rate</text>
+    </g>
+
+    <!-- Down Arrow -->
+    <path d="M 115 309 L 115 329" stroke="#71717a" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow-dim)"/>
+
+    <!-- Failure Card -->
+    <g transform="translate(18, 338)">
+      <rect x="0" y="0" width="194" height="62" rx="6" fill="#1c1315" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" fill="#ef4444" font-size="10" font-weight="700" letter-spacing="0.5">UNUSABLE ACCURACY</text>
+      <text x="14" y="48" fill="#f87171" font-size="20" font-weight="800">30% Max</text>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: MODERN PIPELINE ================= -->
+  <g transform="translate(320, 150)">
+    <!-- Pipeline Box Container -->
+    <rect x="0" y="0" width="620" height="420" rx="10" fill="#12131a" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1"/>
+    
+    <rect x="24" y="20" width="94" height="20" rx="4" fill="#ffffff"/>
+    <text x="71" y="34" fill="#000000" font-size="10" font-weight="800" letter-spacing="1" text-anchor="middle">RE-ENGINEERED</text>
+    
+    <text x="130" y="35" fill="#ffffff" font-size="15" font-weight="700">End-to-End MMAction2 + Edge Serving Architecture</text>
+
+    <!-- Sub-tier 1: Ultralytics Detectors -->
+    <g transform="translate(24, 66)">
+      <rect x="0" y="0" width="170" height="154" rx="8" fill="#181820" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+      <rect x="14" y="14" width="30" height="30" rx="4" fill="#ffffff" fill-opacity="0.08"/>
+      <!-- Grid icon -->
+      <path d="M 22 22 h 5 v 5 h -5 z M 29 22 h 5 v 5 h -5 z M 22 29 h 5 v 5 h -5 z M 29 29 h 5 v 5 h -5 z" fill="#ffffff"/>
+      <text x="52" y="28" fill="#ffffff" font-size="12" font-weight="700">Ultralytics Hub</text>
+      <text x="52" y="42" fill="#a1a1aa" font-size="10">Object Localization</text>
+      
+      <path d="M 14 56 L 156 56" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+      
+      <text x="14" y="76" fill="#71717a" font-size="11">Dynamic Input Pipeline</text>
+      <text x="14" y="98" fill="#ffffff" font-size="12" font-weight="600">• YOLOv5 / v8 Support</text>
+      <text x="14" y="118" fill="#ffffff" font-size="12" font-weight="600">• Spatial Crop Generator</text>
+      <text x="14" y="138" fill="#ffffff" font-size="12" font-weight="600">• Bounding Box Cache</text>
+    </g>
+
+    <!-- Connector: Detector -> Classifier -->
+    <path d="M 204 143 L 226 143" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Sub-tier 2: MMAction2 Recognition -->
+    <g transform="translate(236, 66)">
+      <rect x="0" y="0" width="170" height="154" rx="8" fill="#181820" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+      <rect x="14" y="14" width="30" height="30" rx="4" fill="#ffffff" fill-opacity="0.2"/>
+      <!-- Video reels icon -->
+      <circle cx="29" cy="29" r="6" stroke="#ffffff" stroke-width="2" fill="none"/>
+      <path d="M 26 26 L 34 29 L 26 32 Z" fill="#ffffff"/>
+      
+      <text x="52" y="28" fill="#ffffff" font-size="12" font-weight="700">MMAction2</text>
+      <text x="52" y="42" fill="#a1a1aa" font-size="10">Pretrained Engine</text>
+
+      <path d="M 14 56 L 156 56" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+
+      <text x="14" y="76" fill="#71717a" font-size="11">Spatio-Temporal Model</text>
+      <text x="14" y="98" fill="#ffffff" font-size="12" font-weight="600">• Video Clip Feeder</text>
+      <text x="14" y="118" fill="#ffffff" font-size="12" font-weight="600">• Suspicious Cue Recog.</text>
+      <text x="14" y="138" fill="#ffffff" font-size="12" font-weight="600">• High Temporal Res.</text>
+    </g>
+
+    <!-- Connector: Classifier -> FastApi Alert -->
+    <path d="M 416 143 L 438 143" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Sub-tier 3: FastAPI Edge Engine -->
+    <g transform="translate(448, 66)">
+      <rect x="0" y="0" width="148" height="154" rx="8" fill="#181820" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+      <rect x="14" y="14" width="30" height="30" rx="4" fill="#ffffff" fill-opacity="0.08"/>
+      <!-- Bolt icon -->
+      <path d="M 30 18 L 23 29 L 29 29 L 27 40 L 35 27 L 29 27 Z" fill="#ffffff"/>
+      
+      <text x="52" y="28" fill="#ffffff" font-size="12" font-weight="700">FastAPI</text>
+      <text x="52" y="42" fill="#a1a1aa" font-size="10">Alert Dispatch</text>
+
+      <path d="M 14 56 L 134 56" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+
+      <text x="14" y="76" fill="#71717a" font-size="11">Real-Time Routing</text>
+      <text x="14" y="98" fill="#ffffff" font-size="12" font-weight="600">• Event Webhooks</text>
+      <text x="14" y="118" fill="#ffffff" font-size="12" font-weight="600">• Zero-Delay Queue</text>
+      <text x="14" y="138" fill="#ffffff" font-size="12" font-weight="600">• Low-Footprint</text>
+    </g>
+
+    <!-- Downward bus to Edge Box -->
+    <path d="M 522 230 L 522 248 L 310 248 L 310 264" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+
+    <!-- Sub-tier 4: Edge Deployment (Hardware Container) -->
+    <g transform="translate(24, 274)">
+      <rect x="0" y="0" width="572" height="126" rx="8" fill="#000000" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"/>
+      
+      <!-- Top banner for Edge container -->
+      <rect x="16" y="16" width="18" height="18" rx="3" fill="#ffffff"/>
+      <!-- Microchip pin details -->
+      <rect x="20" y="20" width="10" height="10" fill="#000000"/>
+      <text x="42" y="30" fill="#ffffff" font-size="12" font-weight="800" letter-spacing="0.5">DEPLOYED ON JETSON NANO (DOCKER)</text>
+      
+      <!-- Performance specs layout -->
+      <g transform="translate(16, 52)">
+        <rect x="0" y="0" width="170" height="58" rx="6" fill="#18181b" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+        <text x="14" y="24" fill="#a1a1aa" font-size="10" font-weight="600">ENVIRONMENT</text>
+        <text x="14" y="44" fill="#ffffff" font-size="13" font-weight="700">Containerized Daemon</text>
+      </g>
+      
+      <g transform="translate(200, 52)">
+        <rect x="0" y="0" width="170" height="58" rx="6" fill="#18181b" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+        <text x="14" y="24" fill="#a1a1aa" font-size="10" font-weight="600">INFERENCE EXECUTION</text>
+        <text x="14" y="44" fill="#ffffff" font-size="13" font-weight="700">Real-Time Edge Loop</text>
+      </g>
+
+      <g transform="translate(384, 52)">
+        <rect x="0" y="0" width="172" height="58" rx="6" fill="#ffffff" stroke="#ffffff" stroke-width="1"/>
+        <text x="14" y="24" fill="#000000" font-size="10" font-weight="800">ACCURACY DELIVERED</text>
+        <text x="14" y="47" fill="#000000" font-size="20" font-weight="900">65% (+116%)</text>
+      </g>
+    </g>
+  </g>
+</svg>
