@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#222222" stroke-width="0.75" stroke-dasharray="2 2" />
+    </pattern>
+
+    <!-- Arrow Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#FFFFFF" />
+    </marker>
+    <marker id="arrow-dim" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#777777" />
+    </marker>
+
+    <!-- Filters for Depth -->
+    <filter id="subtle-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title-main { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 24px; font-weight: 800; fill: #FFFFFF; letter-spacing: 2px; }
+    .title-sub { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #888888; letter-spacing: 3px; }
+    .tag { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, monospace; font-size: 10px; font-weight: 700; fill: #000000; letter-spacing: 1px; }
+    .node-header { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 700; fill: #FFFFFF; letter-spacing: 0.5px; }
+    .node-body { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; fill: #AAAAAA; line-height: 1.4; }
+    .metric-title { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #888888; text-transform: uppercase; letter-spacing: 1px; }
+    .metric-val-dim { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 20px; font-weight: 500; fill: #555555; text-decoration: line-through; }
+    .metric-arrow { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 14px; fill: #888888; }
+    .metric-val-bold { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 28px; font-weight: 800; fill: #FFFFFF; }
+    .metric-delta { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, monospace; font-size: 10.5px; font-weight: 700; fill: #000000; }
+  </style>
+
+  <!-- Deep Black Base Canvas -->
+  <rect width="100%" height="100%" fill="#0A0A0A" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Outer Frame -->
+  <rect x="25" y="25" width="1050" height="630" rx="16" fill="none" stroke="#262626" stroke-width="1.5" />
+
+  <!-- HEADER -->
+  <g transform="translate(60, 65)">
+    <!-- Badges -->
+    <rect x="0" y="0" width="80" height="20" rx="4" fill="#FFFFFF" />
+    <text x="40" y="14" class="tag" text-anchor="middle">CASE STUDY</text>
+
+    <rect x="90" y="0" width="125" height="20" rx="4" fill="none" stroke="#444444" stroke-width="1" />
+    <text x="152" y="14" class="tag" fill="#888888" text-anchor="middle">EDGE INFERENCE</text>
+
+    <!-- Main Title -->
+    <text x="0" y="52" class="title-main">SMARTON</text>
+    <text x="138" y="52" class="title-main" font-weight="300" fill="#666666">—</text>
+    <text x="165" y="52" class="title-main" font-weight="300" fill="#DDDDDD">ON-DEVICE VISION ACCURACY</text>
+    <text x="0" y="74" class="title-sub">OPTIMIZATION PIPELINE • QUANTIZATION • RAG DOCUMENT QA</text>
+  </g>
+
+  <!-- ================= SECTION 1: PROBLEM (LEFT) ================= -->
+  <g transform="translate(60, 180)">
+    <!-- Column Frame -->
+    <rect x="0" y="0" width="260" height="435" rx="12" fill="#121212" stroke="#262626" stroke-width="1.5" filter="url(#subtle-glow)"/>
+
+    <!-- Section Badge -->
+    <rect x="18" y="18" width="85" height="18" rx="3" fill="#262626" />
+    <text x="60" y="31" class="tag" fill="#AAAAAA" text-anchor="middle">01 / BOTTLENECK</text>
+
+    <text x="18" y="65" class="node-header">Hardware Constraints</text>
+    <text x="18" y="85" class="node-body">Field deployment demanded zero-</text>
+    <text x="18" y="103" class="node-body">latency offline inference with</text>
+    <text x="18" y="121" class="node-body">extreme resource boundaries.</text>
+
+    <!-- Problem Nodes -->
+    <!-- Card A: Server Dependent -->
+    <g transform="translate(18, 145)">
+      <rect x="0" y="0" width="224" height="74" rx="8" fill="#181818" stroke="#333333" stroke-width="1" stroke-dasharray="4 3"/>
+      <circle cx="20" cy="24" r="10" fill="#262626"/>
+      <path d="M 16 24 L 24 24 M 20 20 L 20 28" stroke="#888888" stroke-width="1.5"/>
+      <text x="38" y="24" class="node-header" font-size="12px">No Cloud Reliance</text>
+      <text x="18" y="46" class="node-body" font-size="10.5px">Mobile devices operating offline</text>
+      <text x="18" y="60" class="node-body" font-size="10.5px">in remote/constrained field setup.</text>
+    </g>
+
+    <!-- Card B: Low Accuracy -->
+    <g transform="translate(18, 235)">
+      <rect x="0" y="0" width="224" height="88" rx="8" fill="#181818" stroke="#333333" stroke-width="1" stroke-dasharray="4 3"/>
+      <text x="16" y="24" class="node-header" font-size="12px">Untrusted Baselines</text>
+      <text x="16" y="44" class="node-body" font-size="10.5px">High false rejection rate in:</text>
+      <text x="16" y="62" class="node-body" font-size="10.5px" fill="#777777">• Currency Detection:</text>
+      <text x="155" y="62" class="node-body" font-size="10.5px" font-weight="700" fill="#888888">55% Initial</text>
+      <text x="16" y="78" class="node-body" font-size="10.5px" fill="#777777">• Document Scan:</text>
+      <text x="155" y="78" class="node-body" font-size="10.5px" font-weight="700" fill="#888888">80% Initial</text>
+    </g>
+
+    <!-- Device Icon Outline -->
+    <g transform="translate(18, 340)">
+      <rect x="0" y="0" width="224" height="75" rx="8" fill="#161616" stroke="#222222"/>
+      <rect x="18" y="14" width="26" height="46" rx="4" fill="none" stroke="#555555" stroke-width="1.5"/>
+      <circle cx="31" cy="52" r="2" fill="#555555"/>
+      <line x1="26" y1="19" x2="36" y2="19" stroke="#555555" stroke-width="1.2"/>
+      <text x="56" y="32" class="node-header" font-size="11.5px">Edge Spec Limits</text>
+      <text x="56" y="48" class="node-body" font-size="10px">Limited mobile RAM, CPU thermal</text>
+      <text x="56" y="61" class="node-body" font-size="10px">throttling, battery overhead.</text>
+    </g>
+  </g>
+
+  <!-- Connectors Problem -> Approach -->
+  <path d="M 320 280 L 360 280" fill="none" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow-dim)" />
+  <path d="M 320 480 L 360 480" fill="none" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow-dim)" />
+
+  <!-- ================= SECTION 2: APPROACH (CENTER) ================= -->
+  <g transform="translate(365, 180)">
+    <!-- Column Frame -->
+    <rect x="0" y="0" width="370" height="435" rx="12" fill="#121212" stroke="#444444" stroke-width="1.5" filter="url(#subtle-glow)"/>
+
+    <!-- Section Badge -->
+    <rect x="20" y="18" width="95" height="18" rx="3" fill="#FFFFFF" />
+    <text x="67" y="31" class="tag" text-anchor="middle">02 / ARCHITECTURE</text>
+
+    <text x="20" y="65" class="node-header">Optimization &amp; Edge Integration</text>
+    <text x="20" y="85" class="node-body">Three-tier systematic uplift spanning training set curate,</text>
+    <text x="20" y="103" class="node-body">weight compression, and downstream context retrieval.</text>
+
+    <!-- Step 1: Dataset & Hyperparameters -->
+    <g transform="translate(20, 125)">
+      <rect x="0" y="0" width="330" height="82" rx="8" fill="#181818" stroke="#333333" stroke-width="1.2"/>
+      <circle cx="22" cy="22" r="12" fill="#222222" stroke="#555555"/>
+      <text x="22" y="26" class="node-header" font-size="11px" text-anchor="middle">A</text>
+      <text x="44" y="24" class="node-header" font-size="13px">Dataset Tuning &amp; Curation</text>
+      <text x="44" y="44" class="node-body" font-size="11px">Engineered specialized augmentation pipelines;</text>
+      <text x="44" y="59" class="node-body" font-size="11px">eliminated noisy annotations &amp; optimized priors.</text>
+      <line x1="44" y1="69" x2="310" y2="69" stroke="#252525" stroke-width="1"/>
+    </g>
+
+    <!-- Micro connector inside -->
+    <line x1="185" y1="207" x2="185" y2="227" stroke="#666666" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+    <!-- Step 2: On-Device Quantization -->
+    <g transform="translate(20, 227)">
+      <rect x="0" y="0" width="330" height="86" rx="8" fill="#1C1C1C" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="22" cy="22" r="12" fill="#FFFFFF"/>
+      <text x="22" y="26" class="node-header" font-size="11px" fill="#000000" text-anchor="middle">B</text>
+      <text x="44" y="24" class="node-header" font-size="13px">Model Quantization &amp; Android Exec</text>
+      <text x="44" y="44" class="node-body" font-size="11px" fill="#DDDDDD">Converted FP32 models to INT8 weights with</text>
+      <text x="44" y="59" class="node-body" font-size="11px" fill="#DDDDDD">Android runtime team; tailored for NPU/NNAPI.</text>
+      <rect x="44" y="67" width="138" height="12" rx="2" fill="#2A2A2A"/>
+      <text x="47" y="76" class="tag" font-size="8.5px" fill="#AAAAAA">ZERO FIELD COMPUTE DRIFT</text>
+    </g>
+
+    <!-- Micro connector inside -->
+    <line x1="185" y1="313" x2="185" y2="333" stroke="#666666" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+    <!-- Step 3: RAG QA Layer -->
+    <g transform="translate(20, 333)">
+      <rect x="0" y="0" width="330" height="82" rx="8" fill="#181818" stroke="#333333" stroke-width="1.2"/>
+      <circle cx="22" cy="22" r="12" fill="#222222" stroke="#555555"/>
+      <text x="22" y="26" class="node-header" font-size="11px" text-anchor="middle">C</text>
+      <text x="44" y="24" class="node-header" font-size="13px">LangChain / RAG Document-QA</text>
+      <text x="44" y="44" class="node-body" font-size="11px">Grounded QA retrieval layer ensuring semantic</text>
+      <text x="44" y="59" class="node-body" font-size="11px">fidelity across indexed text &amp; layout structures.</text>
+    </g>
+  </g>
+
+  <!-- Connectors Approach -> Impact -->
+  <path d="M 735 280 L 775 280" fill="none" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 735 480 L 775 480" fill="none" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- ================= SECTION 3: IMPACT (RIGHT) ================= -->
+  <g transform="translate(780, 180)">
+    <!-- Column Frame -->
+    <rect x="0" y="0" width="260" height="435" rx="12" fill="#121212" stroke="#262626" stroke-width="1.5" filter="url(#subtle-glow)"/>
+
+    <!-- Section Badge -->
+    <rect x="18" y="18" width="75" height="18" rx="3" fill="#262626" />
+    <text x="55" y="31" class="tag" fill="#AAAAAA" text-anchor="middle">03 / METRICS</text>
+
+    <text x="18" y="65" class="node-header">Production Gains</text>
+    <text x="18" y="85" class="node-body">Field-validated accuracy jumps</text>
+    <text x="18" y="103" class="node-body">measured on physical devices.</text>
+
+    <!-- Metric Card 1: Currency -->
+    <g transform="translate(18, 125)">
+      <rect x="0" y="0" width="224" height="115" rx="8" fill="#181818" stroke="#333333" stroke-width="1.2"/>
+      
+      <text x="16" y="24" class="metric-title">Currency Detection</text>
+      
+      <!-- Progress Bar Backing -->
+      <rect x="16" y="36" width="192" height="6" rx="3" fill="#262626"/>
+      <!-- Progress Fill: 79% -->
+      <rect x="16" y="36" width="151" height="6" rx="3" fill="#FFFFFF"/>
+      
+      <!-- Values -->
+      <text x="16" y="76" class="metric-val-dim">55%</text>
+      <text x="68" y="74" class="metric-arrow">→</text>
+      <text x="88" y="78" class="metric-val-bold">79%</text>
+
+      <rect x="156" y="60" width="52" height="20" rx="3" fill="#FFFFFF"/>
+      <text x="182" y="74" class="metric-delta" text-anchor="middle">+24%</text>
+
+      <text x="16" y="102" class="node-body" font-size="10px" fill="#777777">Robust to fold, lighting &amp; tilt</text>
+    </g>
+
+    <!-- Metric Card 2: Documents -->
+    <g transform="translate(18, 255)">
+      <rect x="0" y="0" width="224" height="115" rx="8" fill="#181818" stroke="#333333" stroke-width="1.2"/>
+      
+      <text x="16" y="24" class="metric-title">Document Detection</text>
+      
+      <!-- Progress Bar Backing -->
+      <rect x="16" y="36" width="192" height="6" rx="3" fill="#262626"/>
+      <!-- Progress Fill: 94% -->
+      <rect x="16" y="36" width="180" height="6" rx="3" fill="#FFFFFF"/>
+      
+      <!-- Values -->
+      <text x="16" y="76" class="metric-val-dim">80%</text>
+      <text x="68" y="74" class="metric-arrow">→</text>
+      <text x="88" y="78" class="metric-val-bold">94%</text>
+
+      <rect x="156" y="60" width="52" height="20" rx="3" fill="#FFFFFF"/>
+      <text x="182" y="74" class="metric-delta" text-anchor="middle">+14%</text>
+
+      <text x="16" y="102" class="node-body" font-size="10px" fill="#777777">High-precision border isolation</text>
+    </g>
+
+    <!-- Execution Badge -->
+    <g transform="translate(18, 385)">
+      <rect x="0" y="0" width="224" height="32" rx="6" fill="#000000" stroke="#333333" stroke-width="1"/>
+      <circle cx="16" cy="16" r="4" fill="#FFFFFF"/>
+      <text x="28" y="20" class="tag" font-size="9.5px" fill="#CCCCCC">RUNS QUANTIZED ON MOBILE</text>
+    </g>
+  </g>
+
+  <!-- BOTTOM STATUS LINE -->
+  <g transform="translate(60, 638)">
+    <circle cx="4" cy="0" r="3" fill="#FFFFFF" />
+    <text x="16" y="3.5" class="tag" font-size="9px" fill="#666666">ARCHITECTURAL SCHEMATIC • PRODUCTION DEPLOYMENT COMPLETE</text>
+  </g>
+</svg>

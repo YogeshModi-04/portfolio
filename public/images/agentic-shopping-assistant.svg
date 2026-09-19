@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" height="100%">
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#222222" stroke-width="0.8" />
+    </pattern>
+
+    <!-- Arrow Marker (White) -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#FFFFFF" />
+    </marker>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="shadow" x="-6%" y="-6%" width="112%" height="112%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+  </defs>
+
+  <style>
+    .title-main { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 20px; font-weight: 700; fill: #FFFFFF; letter-spacing: 2px; }
+    .title-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #888888; letter-spacing: 0.5px; }
+    .node-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+    .node-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #AAAAAA; }
+    .edge-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 10px; fill: #777777; }
+    .badge { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 9px; font-weight: 600; fill: #000000; }
+  </style>
+
+  <!-- Deep Dark Canvas -->
+  <rect width="960" height="620" fill="#0A0A0A" />
+  <rect width="960" height="620" fill="url(#grid)" />
+
+  <!-- Outer Boundary Frame -->
+  <rect x="20" y="20" width="920" height="580" rx="12" fill="none" stroke="#262626" stroke-width="1.5" />
+
+  <!-- Header Section -->
+  <g transform="translate(45, 45)">
+    <text x="0" y="20" class="title-main">AGENTIC SHOPPING ASSISTANT</text>
+    <text x="0" y="38" class="title-sub">Modular Service Architecture • LangGraph Orchestration • XGBoost Ranking</text>
+    <rect x="740" y="6" width="130" height="24" rx="4" fill="#FFFFFF" />
+    <text x="805" y="22" class="badge" text-anchor="middle">PRODUCTION SERVICE</text>
+  </g>
+
+  <!-- Section Boundary: LangGraph State Machine -->
+  <rect x="270" y="105" width="420" height="340" rx="10" fill="#121212" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4" filter="url(#shadow)" />
+  <text x="290" y="132" class="node-title" fill="#666666">LANGGRAPH RUNTIME</text>
+  <text x="610" y="132" class="node-desc" fill="#555555">StateGraph Loop</text>
+
+  <!-- Node 1: Client / Streaming Interface -->
+  <g transform="translate(50, 220)">
+    <rect width="160" height="100" rx="8" fill="#161616" stroke="#FFFFFF" stroke-width="1.5" filter="url(#shadow)" />
+    <circle cx="24" cy="28" r="8" fill="#FFFFFF" />
+    <path d="M 21 28 L 27 28 M 24 25 L 24 31" stroke="#000000" stroke-width="1.5" />
+    <text x="40" y="32" class="node-title">Client Layer</text>
+    <text x="20" y="60" class="node-desc">• SSE / Streaming API</text>
+    <text x="20" y="76" class="node-desc">• Web &amp; Chat Interface</text>
+    <text x="20" y="92" class="node-desc">• Async Input/Output</text>
+  </g>
+
+  <!-- Node 2: Supervisor & Intent Router -->
+  <g transform="translate(300, 160)">
+    <rect width="170" height="90" rx="8" fill="#1A1A1A" stroke="#444444" stroke-width="1.2" filter="url(#shadow)" />
+    <text x="20" y="30" class="node-title">Supervisor Node</text>
+    <text x="20" y="52" class="node-desc">• Intent parsing</text>
+    <text x="20" y="68" class="node-desc">• Dialogue state check</text>
+    <text x="20" y="84" class="node-desc">• Tool selection switch</text>
+  </g>
+
+  <!-- Node 3: Recommendation & Context Engine -->
+  <g transform="translate(500, 160)">
+    <rect width="170" height="90" rx="8" fill="#1A1A1A" stroke="#444444" stroke-width="1.2" filter="url(#shadow)" />
+    <text x="20" y="30" class="node-title">Context Gatherer</text>
+    <text x="20" y="52" class="node-desc">• User profile history</text>
+    <text x="20" y="68" class="node-desc">• Feature vector builder</text>
+    <text x="20" y="84" class="node-desc">• Catalog filter</text>
+  </g>
+
+  <!-- Node 4: Synthesis & Streaming Generator -->
+  <g transform="translate(400, 315)">
+    <rect width="180" height="95" rx="8" fill="#1A1A1A" stroke="#444444" stroke-width="1.2" filter="url(#shadow)" />
+    <text x="20" y="30" class="node-title">Synthesis Node</text>
+    <text x="20" y="52" class="node-desc">• Reranked candidates</text>
+    <text x="20" y="68" class="node-desc">• Reasoning generation</text>
+    <text x="20" y="84" class="node-desc">• Token-by-token stream</text>
+  </g>
+
+  <!-- Node 5: XGBoost Ranking Engine -->
+  <g transform="translate(745, 155)">
+    <rect width="165" height="100" rx="8" fill="#161616" stroke="#FFFFFF" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="15" y="16" width="22" height="22" rx="3" fill="#FFFFFF" />
+    <text x="26" y="31" class="badge" text-anchor="middle">ML</text>
+    <text x="45" y="32" class="node-title">XGBoost Ranker</text>
+    <text x="15" y="58" class="node-desc">• Scoring model</text>
+    <text x="15" y="74" class="node-desc">• Feature inference</text>
+    <text x="15" y="90" class="node-desc">• Cold-start heuristics</text>
+  </g>
+
+  <!-- Node 6: SQLite Checkpointer & Storage -->
+  <g transform="translate(380, 480)">
+    <rect width="220" height="90" rx="8" fill="#161616" stroke="#888888" stroke-width="1.2" filter="url(#shadow)" />
+    <path d="M 22 28 C 22 24, 40 24, 40 24 C 40 24, 58 24, 58 28 C 58 32, 40 32, 40 32 C 40 32, 22 32, 22 28 Z" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+    <path d="M 22 28 L 22 42 C 22 46, 40 46, 40 46 C 40 46, 58 46, 58 42 L 58 28" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+    <text x="70" y="34" class="node-title">SQLite Checkpointer</text>
+    <text x="22" y="60" class="node-desc">• Session thread storage</text>
+    <text x="22" y="76" class="node-desc">• State rewind &amp; crash recovery</text>
+  </g>
+
+  <!-- Node 7: Packaging & Modularity -->
+  <g transform="translate(50, 480)">
+    <rect width="200" height="90" rx="8" fill="#121212" stroke="#333333" stroke-width="1.2" />
+    <text x="20" y="30" class="node-title">Modular Architecture</text>
+    <text x="20" y="52" class="node-desc">• Isolated service packages</text>
+    <text x="20" y="68" class="node-desc">• Config &amp; schema validation</text>
+    <text x="20" y="84" class="node-desc">• Typed contracts (Pydantic)</text>
+  </g>
+
+  <!-- Connective Edges & Flows -->
+
+  <!-- Client -> LangGraph Supervisor -->
+  <path d="M 210 250 L 300 215" fill="none" stroke="#FFFFFF" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="220" y="222" class="edge-label">user query</text>
+
+  <!-- LangGraph Flow: Supervisor -> Gatherer -->
+  <path d="M 470 205 L 500 205" fill="none" stroke="#888888" stroke-width="1.2" marker-end="url(#arrow)" />
+
+  <!-- Gatherer -> XGBoost Model -->
+  <path d="M 670 195 L 745 195" fill="none" stroke="#FFFFFF" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="680" y="185" class="edge-label">features</text>
+
+  <!-- XGBoost Model -> Synthesis -->
+  <path d="M 745 230 L 710 230 L 710 350 L 580 350" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow)" />
+  <text x="640" y="340" class="edge-label">ranked items</text>
+
+  <!-- Supervisor directly to Synthesis (chitchat/clarifications) -->
+  <path d="M 385 250 L 385 360 L 400 360" fill="none" stroke="#555555" stroke-width="1.2" marker-end="url(#arrow)" />
+
+  <!-- Synthesis Node -> Client (Streaming Response) -->
+  <path d="M 400 380 L 150 380 L 150 320" fill="none" stroke="#FFFFFF" stroke-width="1.8" marker-end="url(#arrow)" />
+  <text x="205" y="398" class="edge-label" fill="#FFFFFF">token stream (SSE)</text>
+
+  <!-- LangGraph State Checkpointing to SQLite -->
+  <path d="M 490 410 L 490 480" fill="none" stroke="#888888" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+  <text x="500" y="450" class="edge-label">checkpoint</text>
+</svg>

@@ -19,9 +19,9 @@ export default function Testimonials() {
           <h2 className="section-title">What people say</h2>
         </div>
 
-        <div className="testimonials-grid" data-reveal>
+        <div className="testimonials-grid">
           {testimonials.map((t) => (
-            <figure className="testimonial card" data-reveal key={t.name}>
+            <figure className="testimonial card" data-reveal="slide" key={t.name}>
               <span className="testimonial-mark" aria-hidden="true">
                 &ldquo;
               </span>

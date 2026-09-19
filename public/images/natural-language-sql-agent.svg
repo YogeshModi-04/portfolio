@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="bg-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#262626" />
+    </pattern>
+
+    <!-- Arrow Markers -->
+    <marker id="arrow-forward" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#FFFFFF" />
+    </marker>
+    <marker id="arrow-return" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#888888" />
+    </marker>
+  </defs>
+
+  <style>
+    .title-main { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 20px; font-weight: 700; fill: #FFFFFF; letter-spacing: 0.5px; }
+    .title-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 400; fill: #888888; }
+    .badge-text { font-family: 'SFMono-Regular', Consolas, Monaco, monospace; font-size: 11px; font-weight: 600; fill: #FFFFFF; }
+    .node-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 600; fill: #FFFFFF; }
+    .node-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; font-weight: 400; fill: #A3A3A3; }
+    .code-text { font-family: 'SFMono-Regular', Consolas, Monaco, monospace; font-size: 11px; fill: #D4D4D4; }
+    .edge-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #888888; letter-spacing: 0.5px; }
+  </style>
+
+  <!-- Deep Black Base Canvas -->
+  <rect width="1000" height="580" fill="#0A0A0A" rx="16" />
+  <rect width="1000" height="580" fill="url(#bg-grid)" rx="16" />
+
+  <!-- Outer Border -->
+  <rect x="1" y="1" width="998" height="578" fill="none" stroke="#262626" stroke-width="1.5" rx="16" />
+
+  <!-- Header Section -->
+  <g transform="translate(48, 42)">
+    <rect x="0" y="0" width="138" height="24" rx="12" fill="#171717" stroke="#333333" stroke-width="1" />
+    <text x="69" y="16" text-anchor="middle" class="badge-text">LANGCHAIN CORE</text>
+    
+    <text x="0" y="52" class="title-main">Natural-Language SQL Agent</text>
+    <text x="0" y="74" class="title-sub">PostgreSQL Student Database with Validated JsonOutputParser Engine</text>
+  </g>
+
+  <!-- System Pipeline Group -->
+  <g transform="translate(48, 160)">
+    
+    <!-- Boundary Container: LangChain Reasoning Loop -->
+    <rect x="230" y="0" width="480" height="340" rx="14" fill="#121212" stroke="#262626" stroke-width="1.5" stroke-dasharray="6 6" />
+    <text x="250" y="28" class="badge-text" fill="#888888">AGENT REASONING &amp; EXECUTION ENGINE</text>
+
+    <!-- Node 1: User / Client -->
+    <g transform="translate(0, 70)">
+      <rect width="170" height="150" rx="12" fill="#141414" stroke="#333333" stroke-width="1.5" />
+      <circle cx="85" cy="45" r="18" fill="#212121" stroke="#444444" stroke-width="1.5" />
+      <!-- Minimalist User Icon -->
+      <circle cx="85" cy="40" r="6" fill="#FFFFFF" />
+      <path d="M74 53 C74 48, 96 48, 96 53" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linecap="round" />
+      
+      <text x="85" y="85" text-anchor="middle" class="node-title">Natural Query</text>
+      <text x="85" y="105" text-anchor="middle" class="node-desc">"Find top students"</text>
+      <text x="85" y="123" text-anchor="middle" class="code-text" fill="#737373">Plain Text</text>
+    </g>
+
+    <!-- Node 2: Prompt + Few-Shot Template -->
+    <g transform="translate(255, 60)">
+      <rect width="180" height="100" rx="10" fill="#1A1A1A" stroke="#404040" stroke-width="1.5" />
+      <text x="20" y="32" class="node-title">Schema &amp; Prompt</text>
+      <text x="20" y="54" class="node-desc">Student DB Schema</text>
+      <text x="20" y="72" class="code-text">Dialect: postgresql</text>
+      <text x="20" y="88" class="code-text" fill="#737373">Dynamic Few-Shot</text>
+    </g>
+
+    <!-- Node 3: LLM / Query Synthesizer -->
+    <g transform="translate(505, 60)">
+      <rect width="180" height="100" rx="10" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="1.5" />
+      <text x="20" y="32" class="node-title">LLM Synthesizer</text>
+      <text x="20" y="54" class="node-desc">Translates Intent</text>
+      <text x="20" y="74" class="code-text" fill="#FFFFFF">&gt; SQL Code Generation</text>
+      <text x="20" y="88" class="code-text" fill="#737373">Anti-Injection Guard</text>
+    </g>
+
+    <!-- Node 4: JsonOutputParser & Guardrails -->
+    <g transform="translate(380, 205)">
+      <rect width="200" height="105" rx="10" fill="#1E1E1E" stroke="#737373" stroke-width="1.5" />
+      <text x="20" y="30" class="node-title">JsonOutputParser</text>
+      <text x="20" y="52" class="node-desc">Structured Output Spec</text>
+      <text x="20" y="72" class="code-text" fill="#A3A3A3">{ "query": "SELECT..." }</text>
+      <text x="20" y="88" class="code-text" fill="#737373">JSON Validation OK</text>
+    </g>
+
+    <!-- Node 5: PostgreSQL Database -->
+    <g transform="translate(760, 70)">
+      <rect width="150" height="150" rx="12" fill="#141414" stroke="#404040" stroke-width="1.5" />
+      
+      <!-- Minimal Cylinder / Database Icon -->
+      <g transform="translate(60, 25)">
+        <path d="M0 8 C0 3.5 13.5 0 30 0 C46.5 0 60 3.5 60 8 L60 32 C60 36.5 46.5 40 30 40 C13.5 40 0 36.5 0 32 Z" fill="#262626" stroke="#FFFFFF" stroke-width="1.2" />
+        <path d="M0 8 C0 12.5 13.5 16 30 16 C46.5 16 60 12.5 60 8" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+        <path d="M0 20 C0 24.5 13.5 28 30 28 C46.5 28 60 24.5 60 20" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+      </g>
+
+      <text x="75" y="90" text-anchor="middle" class="node-title">PostgreSQL</text>
+      <text x="75" y="108" text-anchor="middle" class="code-text">students_db</text>
+      <text x="75" y="126" text-anchor="middle" class="node-desc">Target Relations</text>
+    </g>
+
+    <!-- Edge Paths & Flows -->
+
+    <!-- 1. User -> Prompt -->
+    <path d="M 170 110 L 255 110" stroke="#FFFFFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-forward)" />
+    <text x="212" y="100" text-anchor="middle" class="edge-label">INPUT</text>
+
+    <!-- 2. Prompt -> LLM -->
+    <path d="M 435 110 L 505 110" stroke="#FFFFFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-forward)" />
+
+    <!-- 3. LLM -> JsonOutputParser -->
+    <path d="M 580 160 L 580 185 L 500 185 L 500 205" stroke="#FFFFFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-forward)" />
+    <text x="548" y="180" text-anchor="middle" class="edge-label">PARSE</text>
+
+    <!-- 4. JsonOutputParser -> PostgreSQL (Execute Read-Only) -->
+    <path d="M 580 255 L 835 255 L 835 220" stroke="#FFFFFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-forward)" />
+    <text x="710" y="246" text-anchor="middle" class="edge-label">VALID SQL (READ-ONLY)</text>
+
+    <!-- 5. PostgreSQL -> User (Return Result Flow) -->
+    <path d="M 810 70 L 810 20 L 85 20 L 85 70" stroke="#888888" stroke-width="1.2" stroke-dasharray="4 4" fill="none" marker-end="url(#arrow-return)" />
+    <text x="450" y="13" text-anchor="middle" class="edge-label" fill="#888888">FORMATTED QUERY DATASET</text>
+
+  </g>
+</svg>

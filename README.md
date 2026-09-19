@@ -4,10 +4,18 @@ A single-page React portfolio (black & white, plain/professional visual style)
 built with Vite. Content lives in `src/data/content.js` — edit that one file to
 update copy, projects, or affiliated products without touching any component.
 
-The project builds to a **single self-contained `dist/index.html`** (all JS/CSS
-inlined via `vite-plugin-singlefile`; only Google Fonts load externally). Static
-files that must be served alongside it — `robots.txt`, `sitemap.xml`,
-`og-image.jpg` — live in `public/` and are copied to `dist/` verbatim on build.
+The project builds to a **single `dist/index.html`** with all JS/CSS inlined via
+`vite-plugin-singlefile` (only Google Fonts load externally). Everything served
+alongside it lives in `public/` and is copied to `dist/` verbatim on build:
+`robots.txt`, `sitemap.xml`, `og-image.jpg`, and **`images/`** — the headshot
+plus the project and case-study visuals.
+
+**Images are deliberately *not* imported.** `assetsInlineLimit` is effectively
+unlimited, so any imported asset is base64-inlined into the HTML and ships
+before first paint regardless of `loading="lazy"`. Serving them from `public/`
+instead cut the page from 483 kB to **262 kB** (gzip 198 kB → **78 kB**). The
+trade: `dist/index.html` is no longer portable on its own — it needs the
+`images/` folder beside it.
 
 ## Positioning
 
@@ -34,18 +42,18 @@ Rendered top-to-bottom (`src/App.jsx`): Nav → Hero → About → Practices
 
 ```
 src/
-  data/content.js        ← all copy/content — edit this first
-  assets/headshot.jpg    ← photo, shown in the About section (imported, not in public/,
-                            so it inlines into the single-file build)
+  data/content.js        ← all copy/content + image paths — edit this first
   components/            ← Nav, Hero, About, Practices, Experience, Projects,
                             Affiliates, Testimonials, FAQ, Contact
   hooks/useReveal.js     ← scroll-reveal hook (adds `is-visible` to `[data-reveal]`)
   index.css              ← design tokens + global styles (incl. `.card` glow, nav,
-                            reduced-motion rules)
+                            `.figure` primitive, reduced-motion rules)
 public/
   robots.txt             ← allows all crawlers + points to the sitemap
   sitemap.xml            ← single homepage URL
   og-image.jpg           ← 1200×630 social share image
+  images/                ← headshot + 6 diagrams + 1 product shot, referenced by
+                            relative URL (`./images/…`) from content.js
 index.html               ← app shell + all SEO meta, canonical, Open Graph/Twitter,
                             JSON-LD schema (Person / WebSite / ProfilePage / FAQPage)
 ```
@@ -67,11 +75,41 @@ index.html               ← app shell + all SEO meta, canonical, Open Graph/Twi
 - **Affiliates — "Products"** — `affiliates` (currently XWCare), kept visually
   distinct from the case studies.
 - **Testimonials** — `testimonials`, 3-up card grid; cards slide in staggered.
-- **Photo** — `src/assets/headshot.jpg`, imported in `content.js`
-  (`profile.photoUrl`). Shown uncropped at natural aspect (~1006×930), max-width
-  340px, with explicit `width`/`height` + `loading="lazy"` to avoid layout
-  shift. To swap it: replace the file (a JPG keeps the page small — see CWV
-  below) and, if the extension changes, update the import in `content.js`.
+- **Photo** — `public/images/headshot.jpg`, referenced by `profile.photoUrl` in
+  `content.js`. Shown uncropped at natural aspect (~1006×930), max-width 420px,
+  with explicit `width`/`height` + `loading="lazy"` to avoid layout shift. On
+  desktop it floats right inside the bio and the copy wraps around it; at
+  ≤860px the float drops so it stacks **above** the text, centred. It is first
+  in the DOM, so reading order matches visual order at every width. In dark mode
+  it gets `brightness(0.78)` — its studio backdrop sits near luminance 198 and
+  glares against the `#111` page. To swap it: replace the file (keep it a JPG)
+  and update `profile.photoUrl` if the extension changes.
+
+### Images (diagrams + product shots)
+
+Projects and case studies can each carry a visual. Add these fields to any entry
+in `projects` or `caseStudies`:
+
+| field | purpose |
+| --- | --- |
+| `image` | relative path, e.g. `"./images/foo.svg"` |
+| `imageAlt` | **required** — describe the architecture, not "a diagram" |
+| `imageWidth` / `imageHeight` | source dimensions; prevents layout shift |
+| `imageKind` | `"photo"` for product shots; omit for diagrams |
+
+Both sections share the `.figure` primitive in `index.css` — don't duplicate it
+per component. Each visual links to its own full-size original with a caption,
+which matters because labels shrink on narrow screens.
+
+Two things to watch when adding a diagram:
+
+- **Animation.** A `<style>` animation inside an SVG keeps running when the file
+  is embedded as an image — the page's global `prefers-reduced-motion` rule
+  can't reach into a separate document. Add a
+  `@media (prefers-reduced-motion: reduce)` block **inside the SVG**
+  (`two-pass-spec-summarizer.svg` has one).
+- **Palette.** The site is black & white. `theft-detection-activity.svg` is the
+  one asset using colour (red for the failed baseline, a green status dot).
 
 ## SEO
 
@@ -99,11 +137,16 @@ without executing JS (the app itself is client-rendered React).
 
 ## Performance (Core Web Vitals)
 
-- The headshot is an **optimized JPG** (~76 KB) rather than PNG — this keeps the
-  single-file `dist/index.html` around **355 KB** (gzip ~152 KB). Saving the
-  photo as PNG previously pushed the page to ~1.7 MB; **keep the photo a JPG.**
-- The photo has explicit `width`/`height` + `height:auto` (no CLS) and
-  `loading="lazy"` / `decoding="async"`.
+- `dist/index.html` is **~262 KB (gzip ~78 KB)**. Images are served from
+  `public/images/` rather than inlined — see the note at the top. Inlining them
+  cost 483 KB / 198 KB gzip, because base64 defeats compression.
+- The headshot is an **optimized JPG** (~73 KB) rather than PNG; as a PNG it
+  previously pushed the page to ~1.7 MB. **Keep the photo a JPG.**
+- The SMARTON product shot is a **256-colour palette PNG** (20 KB, down from
+  182 KB) — it keeps its alpha channel, so don't flatten it to JPG.
+- Every image has explicit `width`/`height` + `height:auto` (no CLS) and
+  `loading="lazy"` / `decoding="async"`. Now that they are separate files, the
+  lazy attribute actually defers them.
 - Fonts use `preconnect` + `display=swap`.
 - Scroll-reveal and card animations use compositor-friendly `opacity`/`transform`
   and respect `prefers-reduced-motion` (global rule in `index.css`).
@@ -131,9 +174,9 @@ npm run dev       # http://localhost:5173
 npm run build
 ```
 
-Outputs a single self-contained `dist/index.html` plus the `public/` files
-(`robots.txt`, `sitemap.xml`, `og-image.jpg`). Vercel runs this automatically on
-every deploy — you don't need to build by hand.
+Outputs `dist/index.html` plus the `public/` files (`robots.txt`, `sitemap.xml`,
+`og-image.jpg`, `images/`). Vercel runs this automatically on every deploy —
+you don't need to build by hand.
 
 ## Contact / scheduling
 
@@ -157,7 +200,9 @@ Every future `git push` redeploys automatically.
 
 ## Sharing a quick preview (no deploy)
 
-Because the build is one self-contained file, `dist/index.html` can be opened
-directly, emailed, or published as a Claude Artifact. If published as an
-Artifact, strip the outer `<!doctype>/<html>/<head>/<body>` wrappers first (the
-Artifact host adds its own). Contact/scheduling links work in any preview.
+`dist/index.html` can be opened directly or zipped and shared — **but the
+`images/` folder must travel with it.** Image paths are relative (`./images/…`)
+precisely so a copied `dist/` folder works offline; the HTML alone will render
+with broken images. Emailing the single file, or publishing it as a Claude
+Artifact, no longer carries the visuals — host the folder instead, or point at
+the deployed site. Contact/scheduling links work in any preview.

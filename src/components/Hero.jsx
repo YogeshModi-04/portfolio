@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="hero-text">
           <p className="eyebrow hero-eyebrow">AI/ML Architect &amp; Consultant</p>
 
-          <h1 className="hero-name">Yogesh Modi</h1>
+          <h1 className="hero-name">{profile.name}</h1>
 
           <p className="hero-tagline">{profile.tagline}</p>
 
@@ -73,11 +73,6 @@ export default function Hero() {
         .hero-role {
           font-size: clamp(1.05rem, 2vw, 1.2rem);
           font-weight: 600;
-        }
-
-        .hero-sub {
-          font-size: 0.92rem;
-          color: var(--fg-faint);
         }
 
         .hero-statement {
