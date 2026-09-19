@@ -62,7 +62,7 @@ index.html               ← app shell + all SEO meta, canonical, Open Graph/Twi
 - **Experience — "Problems I've solved"** — three Problem/Approach/Impact case
   studies (`caseStudies`) plus a **Certifications** block (`certifications`).
   There is no Education block and no dates/role titles here.
-- **Projects — "Selected builds"** — six builds (`projects`). Cards slide in
+- **Projects — "Selected builds"** — four builds (`projects`). Cards slide in
   from the left on scroll, matching the testimonial animation.
 - **Affiliates — "Products"** — `affiliates` (currently XWCare), kept visually
   distinct from the case studies.

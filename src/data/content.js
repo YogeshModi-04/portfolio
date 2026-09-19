@@ -44,29 +44,29 @@ export const practices = {
   title: "How I work",
   items: [
     {
-      heading: "I start with your problem, not a template",
+      heading: "You don't need a plan to start",
       detail:
-        "You don't need a polished spec to begin. I take a messy, real-world problem — even dense, non-technical material — and architect a solution around what your business actually needs, instead of forcing it into an off-the-shelf tool. On my flagship build that meant pulling 46+ business systems and 10,000+ product specs into one place, so staff could get answers just by asking in plain language.",
+        "Bring me the messy version. I work out what your business actually needs, then build around that instead of a ready-made tool that half fits. On my biggest build that meant merging 46 systems into one place, so staff could get answers just by asking.",
     },
     {
-      heading: "I build it so your team can actually use it",
+      heading: "Built for your team, not for engineers",
       detail:
-        "The tools I ship are made for real people, not engineers. On that same platform, non-technical staff create and monitor their own AI assistants from a simple screen — no code, and no need to understand the machinery underneath.",
+        "Your staff shouldn't need training to use what I build. On that same system, non-technical people set up and ran their own AI assistants from one simple screen. No code involved.",
     },
     {
-      heading: "I fit the solution to your real constraints",
+      heading: "It fits your budget and your rules",
       detail:
-        "I scope to what your business, budget and rules actually require — not the most expensive option on paper. That includes giving your admins simple control over running costs and how sensitive data is handled.",
+        "I build what your business actually needs, not the most expensive option on paper. Your admins keep simple control over running costs and how sensitive data is handled.",
     },
     {
-      heading: "I decide with evidence, and can prove it",
+      heading: "I show you the numbers",
       detail:
-        "When I improve something, I can show you the numbers. I've raised model accuracy from 55% to 79%, more than doubled another from 30% to 65%, and cut a platform's deployment time by 80%. If a change doesn't measurably help, it doesn't ship.",
+        "Every change has to prove it helps. I've lifted one system's accuracy from 55% to 79%, doubled another from 30% to 65%, and cut a platform's launch time by 80%. If it doesn't move a number, it doesn't ship.",
     },
     {
-      heading: "One owner, from first call to long after go-live",
+      heading: "One person, start to finish",
       detail:
-        "You work with one person who owns the whole thing — architecture, delivery, testing and the demo — and who frames every trade-off in time, cost and risk, not jargon. No handoffs, no gaps for you to manage: just a system that ships and keeps running.",
+        "You deal with me, not a chain of handoffs. I design it, build it, test it, and stay involved long after launch. Every trade-off explained in time, cost and risk — never jargon.",
     },
   ],
 };
@@ -163,14 +163,6 @@ export const projects = [
   },
   {
     id: "03",
-    title: "Engineering-Spec Extraction Pipeline",
-    tagline: "PyMuPDF + Gemini Vision, CPU-first OCR",
-    description:
-      "A PDF extraction pipeline for civil-engineering specification documents. Classifies text vs. diagram pages via OpenCV edge-density and connected-component analysis, routes diagrams to RapidOCR, and uses LangExtract for structured material-data extraction.",
-    stack: ["PyMuPDF", "Gemini Vision", "OpenCV", "RapidOCR", "LangExtract"],
-  },
-  {
-    id: "04",
     title: "Two-Pass Spec Summarizer",
     tagline: "Gemini-based document intelligence",
     description:
@@ -178,15 +170,7 @@ export const projects = [
     stack: ["Gemini", "Python", "Document AI"],
   },
   {
-    id: "05",
-    title: "GPT-2 LoRA Fine-Tune for Summarization",
-    tagline: "CNN/DailyMail, LoRA/PEFT",
-    description:
-      "Fine-tuned GPT-2 with LoRA on CNN/DailyMail summarization, debugging CUDA token-ID overflow and position-embedding limits along the way. Training optimized across L4 and P100 GPUs, with WandB logging for ROUGE, BLEU and BERTScore.",
-    stack: ["GPT-2", "LoRA/PEFT", "CUDA", "WandB"],
-  },
-  {
-    id: "06",
+    id: "04",
     title: "Natural-Language SQL Agent",
     tagline: "LangChain over PostgreSQL",
     description:
