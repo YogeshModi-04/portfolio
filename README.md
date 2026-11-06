@@ -4,18 +4,20 @@ A single-page React portfolio (black & white, plain/professional visual style)
 built with Vite. Content lives in `src/data/content.js` — edit that one file to
 update copy, projects, or affiliated products without touching any component.
 
-The project builds to a **single `dist/index.html`** with all JS/CSS inlined via
-`vite-plugin-singlefile` (only Google Fonts load externally). Everything served
-alongside it lives in `public/` and is copied to `dist/` verbatim on build:
-`robots.txt`, `sitemap.xml`, `og-image.jpg`, and **`images/`** — the headshot
-plus the project and case-study visuals.
+The project builds to `dist/index.html` with the **CSS inlined** via
+`vite-plugin-singlefile`, plus one hashed JS bundle in `dist/assets/` (only Google
+Fonts load externally). The JS is deliberately *not* inlined: an inline script
+would force the Content Security Policy to allow `'unsafe-inline'` scripts. Everything
+served alongside it lives in `public/` and is copied to `dist/` verbatim on build:
+`robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/ard.json`, `og-image.jpg`,
+and **`images/`** — the headshot plus the project and case-study visuals, all WebP.
 
 **Images are deliberately *not* imported.** `assetsInlineLimit` is effectively
 unlimited, so any imported asset is base64-inlined into the HTML and ships
 before first paint regardless of `loading="lazy"`. Serving them from `public/`
 instead cut the page from 483 kB to **262 kB** (gzip 198 kB → **78 kB**). The
 trade: `dist/index.html` is no longer portable on its own — it needs the
-`images/` folder beside it.
+`images/` and `assets/` folders beside it.
 
 ## Positioning
 
@@ -51,9 +53,13 @@ src/
 public/
   robots.txt             ← allows all crawlers + points to the sitemap
   sitemap.xml            ← single homepage URL
-  og-image.jpg           ← 1200×630 social share image
-  images/                ← headshot + 6 diagrams + 1 product shot, referenced by
-                            relative URL (`./images/…`) from content.js
+  llms.txt               ← plain-text site summary for LLMs (llmstxt.org format)
+  .well-known/ard.json   ← Agentic Resource Discovery manifest (Person + WebSite)
+  og-image.jpg           ← 1200×630 social share image (kept JPG, see below)
+  images/                ← headshot + 6 diagrams + 1 product shot, all .webp,
+                            referenced by relative URL (`./images/…`) from content.js
+design/diagrams/         ← editable SVG sources for the 6 diagrams (not served)
+vercel.json              ← build config, security headers (CSP, COOP, XFO, …), caching
 index.html               ← app shell + all SEO meta, canonical, Open Graph/Twitter,
                             JSON-LD schema (Person / WebSite / ProfilePage / FAQPage)
 ```
@@ -75,8 +81,8 @@ index.html               ← app shell + all SEO meta, canonical, Open Graph/Twi
 - **Affiliates — "Products"** — `affiliates` (currently XWCare), kept visually
   distinct from the case studies.
 - **Testimonials** — `testimonials`, 3-up card grid; cards slide in staggered.
-- **Photo** — `public/images/headshot.jpg`, referenced by `profile.photoUrl` in
-  `content.js`. Shown uncropped at natural aspect (~1006×930), max-width 420px,
+- **Photo** — `public/images/headshot.webp`, referenced by `profile.photoUrl` in
+  `content.js`. Shown uncropped at natural aspect (720×666), max-width 420px,
   with explicit `width`/`height` + `loading="lazy"` to avoid layout shift. On
   desktop it floats right inside the bio and the copy wraps around it; at
   ≤860px the float drops so it stacks **above** the text, centred. It is first
@@ -92,7 +98,7 @@ in `projects` or `caseStudies`:
 
 | field | purpose |
 | --- | --- |
-| `image` | relative path, e.g. `"./images/foo.svg"` |
+| `image` | relative path, e.g. `"./images/foo.webp"` |
 | `imageAlt` | **required** — describe the architecture, not "a diagram" |
 | `imageWidth` / `imageHeight` | source dimensions; prevents layout shift |
 | `imageKind` | `"photo"` for product shots; omit for diagrams |
@@ -103,12 +109,13 @@ which matters because labels shrink on narrow screens.
 
 Two things to watch when adding a diagram:
 
-- **Animation.** A `<style>` animation inside an SVG keeps running when the file
-  is embedded as an image — the page's global `prefers-reduced-motion` rule
-  can't reach into a separate document. Add a
-  `@media (prefers-reduced-motion: reduce)` block **inside the SVG**
-  (`two-pass-spec-summarizer.svg` has one).
-- **Palette.** The site is black & white. `theft-detection-activity.svg` is the
+- **Diagrams are rasters.** The served files are lossless WebP rendered at 2× from
+  the SVGs in `design/diagrams/`. To change a diagram, edit the SVG there, render
+  it (e.g. headless Chrome with `--force-device-scale-factor=2`), and re-encode:
+  `Image.open(png).convert("RGBA").save("x.webp", lossless=True, method=6)`.
+  Text is baked in, so a copy change (e.g. a headline metric) must be made in the
+  SVG too. Because they are static images, the SVG animations no longer play.
+- **Palette.** The site is black & white. `theft-detection-activity` is the
   one asset using colour (red for the failed baseline, a green status dot).
 
 ## SEO
@@ -125,7 +132,13 @@ without executing JS (the app itself is client-rendered React).
   canonical as a redirect and refuse to index it.
 - **`<meta name="robots">`** → `index, follow, max-image-preview:large, …`
   (nothing on this single public page is intentionally noindexed).
-- **Open Graph + Twitter** cards, using `public/og-image.jpg` (1200×630).
+- **Open Graph + Twitter** cards, using `public/og-image.jpg` (1200×630). It stays
+  a JPG on purpose: some social crawlers (notably LinkedIn and Facebook) don't
+  reliably render WebP share images.
+- **`public/llms.txt`** and **`public/.well-known/ard.json`** — agent-facing
+  summaries (Lighthouse "Agentic Browsing"). `llms.txt` needs an H1 and links;
+  `ard.json` needs `entries[]` with a `urn:air:…` identifier, `displayName`,
+  `type`, and exactly one of `url`/`data`. Keep both in sync with `content.js`.
 - **JSON-LD** (`application/ld+json`): one `@graph` with **Person**, **WebSite**,
   **ProfilePage**, and **FAQPage** (all FAQ Q&As → eligible for FAQ rich
   results). If you edit the FAQ copy in `content.js`, update the FAQPage block in
@@ -137,17 +150,35 @@ without executing JS (the app itself is client-rendered React).
 
 ## Performance (Core Web Vitals)
 
-- `dist/index.html` is **~262 KB (gzip ~78 KB)**. Images are served from
+- `dist/index.html` is **~14 KB** and the JS bundle **~248 KB (gzip ~74 KB)**. Images are served from
   `public/images/` rather than inlined — see the note at the top. Inlining them
   cost 483 KB / 198 KB gzip, because base64 defeats compression.
-- The headshot is an **optimized JPG** (~73 KB) rather than PNG; as a PNG it
-  previously pushed the page to ~1.7 MB. **Keep the photo a JPG.**
-- The SMARTON product shot is a **256-colour palette PNG** (20 KB, down from
-  182 KB) — it keeps its alpha channel, so don't flatten it to JPG.
+- The headshot is a **WebP** (720×666, ~17 KB). Never import a photo as a PNG; as a
+  PNG it previously pushed the page to ~1.7 MB.
+- The SMARTON product shot is a **lossless WebP** (~15 KB) — it keeps its alpha
+  channel, so don't flatten it to JPG.
+- The diagrams are lossless WebP at 2× (45–105 KB each, ~450 KB in total), larger
+  than the ~69 KB of SVG they replaced; they are lazy-loaded.
+- JS is a hashed file in `assets/` served `immutable` for a year; `images/` is
+  cached a day with stale-while-revalidate (filenames aren't hashed).
 - Every image has explicit `width`/`height` + `height:auto` (no CLS) and
   `loading="lazy"` / `decoding="async"`. Now that they are separate files, the
   lazy attribute actually defers them.
-- Fonts use `preconnect` + `display=swap`.
+- Fonts use `preconnect` + `display=swap`, and the Google Fonts stylesheet loads
+  as `media="print"` (flipped to `all` in `main.jsx`) so it doesn't block render.
+
+## Security headers
+
+Set in `vercel.json`: a strict **CSP** (`script-src 'self'`, `object-src 'none'`,
+`base-uri 'none'`, `frame-ancestors 'none'`, Trusted Types required), **COOP**
+`same-origin`, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`,
+`Permissions-Policy` and HSTS. Consequences to remember:
+
+- **No inline scripts or inline event handlers** — they're blocked. Put behaviour
+  in the bundle. (`style-src` allows `'unsafe-inline'` because components render
+  `<style>` tags.)
+- Adding a third-party script, font, image or API host means adding it to the CSP.
+- Headers only apply on Vercel; `npm run dev` / `preview` don't send them.
 - Scroll-reveal and card animations use compositor-friendly `opacity`/`transform`
   and respect `prefers-reduced-motion` (global rule in `index.css`).
 
@@ -174,16 +205,16 @@ npm run dev       # http://localhost:5173
 npm run build
 ```
 
-Outputs `dist/index.html` plus the `public/` files (`robots.txt`, `sitemap.xml`,
-`og-image.jpg`, `images/`). Vercel runs this automatically on every deploy —
+Outputs `dist/index.html`, `dist/assets/` (the JS bundle) plus the `public/` files
+(`robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/`, `og-image.jpg`, `images/`). Vercel runs this automatically on every deploy —
 you don't need to build by hand.
 
 ## Contact / scheduling
 
 No contact form or backend. The Contact section offers a **Schedule a meeting**
-button (Calendly, `profile.calendly`), a `mailto:` link, and LinkedIn/GitHub
+button (a Google Calendar appointment schedule that auto-adds a Google Meet link, `profile.booking`), a `mailto:` link, and LinkedIn/GitHub
 icons. All plain external links — no API keys or env vars. Change the booking
-link via `profile.calendly` in `content.js`.
+link via `profile.booking` in `content.js` (and the matching line in `public/llms.txt`).
 
 ## Deploying to Vercel with yogeshmodi.in
 
@@ -200,9 +231,10 @@ Every future `git push` redeploys automatically.
 
 ## Sharing a quick preview (no deploy)
 
-`dist/index.html` can be opened directly or zipped and shared — **but the
-`images/` folder must travel with it.** Image paths are relative (`./images/…`)
+`dist/` can be zipped and shared — **but `index.html`, `assets/` and `images/` must
+travel together.** (Browsers block module scripts on `file://`, so serve the folder,
+e.g. `npx serve dist`, rather than double-clicking.) Image paths are relative (`./images/…`)
 precisely so a copied `dist/` folder works offline; the HTML alone will render
 with broken images. Emailing the single file, or publishing it as a Claude
-Artifact, no longer carries the visuals — host the folder instead, or point at
+Artifact, no longer carries the app or the visuals — host the folder instead, or point at
 the deployed site. Contact/scheduling links work in any preview.

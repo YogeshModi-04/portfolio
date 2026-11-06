@@ -94,7 +94,7 @@ export default function Contact() {
 
             <a
               className="btn btn-solid contact-schedule-btn"
-              href={profile.calendly}
+              href={profile.booking}
               target="_blank"
               rel="noreferrer"
             >

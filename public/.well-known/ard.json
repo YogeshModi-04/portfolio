@@ -1,0 +1,51 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:yogeshmodi.in:portfolio:person",
+      "displayName": "Yogesh Modi — AI/ML Architect & Consultant",
+      "type": "application/ld+json",
+      "mediaType": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yogesh Shivkumar Modi",
+        "alternateName": "Yogesh Modi",
+        "jobTitle": "AI/ML Architect & Consultant",
+        "url": "https://www.yogeshmodi.in/",
+        "email": "mailto:skmodiyogesh@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ahmedabad",
+          "addressRegion": "Gujarat",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/yogesh-shivkumar-modi/",
+          "https://github.com/YogeshModi-04"
+        ]
+      },
+      "representativeQueries": [
+        "Who is Yogesh Modi?",
+        "Who can build and ship an agentic AI or RAG system end to end?",
+        "How do I contact Yogesh Modi about an AI/ML consulting engagement?"
+      ]
+    },
+    {
+      "identifier": "urn:air:yogeshmodi.in:portfolio:site",
+      "displayName": "Yogesh Modi portfolio site",
+      "type": "application/ld+json",
+      "mediaType": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Yogesh Modi — AI/ML Architect & Consultant",
+        "url": "https://www.yogeshmodi.in/",
+        "description": "Single-page portfolio covering agentic AI, generative AI, RAG, computer vision and applied ML case studies, projects, certifications and contact options. A plain-text summary is at https://www.yogeshmodi.in/llms.txt."
+      },
+      "representativeQueries": [
+        "What AI/ML projects has Yogesh Modi built?",
+        "Where can I find a summary of Yogesh Modi's portfolio for an LLM?"
+      ]
+    }
+  ]
+}

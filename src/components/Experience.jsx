@@ -64,7 +64,13 @@ export default function Experience() {
                 <p className="credentials-main">{c.name}</p>
                 <p className="credentials-sub">
                   {c.org} · Issued {c.issued} ·{" "}
-                  <a className="credential-link" href={c.url} target="_blank" rel="noreferrer">
+                  <a
+                    className="credential-link"
+                    href={c.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Verify ${c.name} certificate`}
+                  >
                     Verify
                   </a>
                 </p>

@@ -43,8 +43,8 @@ export default function Affiliates() {
                 <a className="btn" href={a.link} target="_blank" rel="noreferrer">
                   Know more
                 </a>
-                <a className="btn btn-solid" href={a.demoLink} target="_blank" rel="noreferrer">
-                  Book demo
+                <a className="btn btn-solid" href={a.connectLink} target="_blank" rel="noreferrer">
+                  Let's connect
                 </a>
               </div>
             </article>
