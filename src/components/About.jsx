@@ -16,8 +16,8 @@ export default function About() {
               className="about-photo"
               src={profile.photoUrl}
               alt={`${profile.fullName} — ${profile.role}`}
-              width="1006"
-              height="930"
+              width="720"
+              height="666"
               loading="lazy"
               decoding="async"
             />

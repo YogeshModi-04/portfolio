@@ -1,17 +1,17 @@
-// Served from public/images/ rather than imported. Importing would inline each
-// file into the single-file build (assetsInlineLimit is effectively unlimited),
-// so every visual shipped before first paint. As plain URLs the browser fetches
-// them on demand and loading="lazy" actually takes effect.
-// Paths are relative so a built dist/ folder works opened directly, not just at
-// a domain root.
-const headshot = "./images/headshot.jpg";
-const shoppingAssistantDiagram = "./images/agentic-shopping-assistant.svg";
-const specSummarizerDiagram = "./images/two-pass-spec-summarizer.svg";
-const sqlAgentDiagram = "./images/natural-language-sql-agent.svg";
-const smartonGlasses = "./images/smarton-glasses.png";
-const multiAgentPlatformDiagram = "./images/enterprise-multi-agent-platform.svg";
-const smartonVisionDiagram = "./images/smarton-vision-accuracy.svg";
-const theftDetectionDiagram = "./images/theft-detection-activity.svg";
+// Served from public/images/ as plain URLs rather than imported, so the browser
+// fetches them on demand and loading="lazy" takes effect (small imported assets
+// would be inlined as base64). All visuals are WebP; the editable SVG sources of
+// the diagrams live in design/diagrams/.
+// Paths are relative so a built dist/ folder works when served from any folder,
+// not just at a domain root.
+const headshot = "./images/headshot.webp";
+const shoppingAssistantDiagram = "./images/agentic-shopping-assistant.webp";
+const specSummarizerDiagram = "./images/two-pass-spec-summarizer.webp";
+const sqlAgentDiagram = "./images/natural-language-sql-agent.webp";
+const smartonGlasses = "./images/smarton-glasses.webp";
+const multiAgentPlatformDiagram = "./images/enterprise-multi-agent-platform.webp";
+const smartonVisionDiagram = "./images/smarton-vision-accuracy.webp";
+const theftDetectionDiagram = "./images/theft-detection-activity.webp";
 
 export const profile = {
   name: "Yogesh Modi",
@@ -23,7 +23,7 @@ export const profile = {
   github: "https://github.com/YogeshModi-04",
   githubHandle: "YogeshModi-04",
   linkedin: "https://www.linkedin.com/in/yogesh-shivkumar-modi/",
-  calendly: "https://calendly.com/skmodiyogesh/30min",
+  booking: "https://calendar.app.google/Y5nZ9xPow2h35UHg6",
   initials: "YM",
   photoUrl: headshot,
 };
@@ -34,7 +34,7 @@ export const about = {
   bio: [
     "Hi — I'm Yogesh Modi, an AI/ML architect and consultant. I take AI from a rough, real-world problem all the way to production for an actual business — owned end to end, and never left as a demo that falls apart after the pitch.",
     "My path started during my B.Tech in Information Technology and clicked with my first real build in an internship — machine learning and deep learning combined for image segmentation and prediction. I went pro as an AI Engineer at Sunbots Innovations LLP, shipping optimized models across the company's products and client projects, mentoring junior engineers, and working directly with clients to understand what they actually needed.",
-    "I focus on outcomes I can point to: computer-vision models running on-device in assistive smart-glasses used by thousands, a model's real-world accuracy more than doubled, and a platform's deployment time cut by around 80%. My rule is simple — if a change doesn't measurably help, it doesn't ship.",
+    "I focus on outcomes I can point to: computer-vision models running on-device in assistive smart-glasses used by thousands, a model's real-world accuracy more than doubled, and a platform's container size cut by around 80%. My rule is simple — if a change doesn't measurably help, it doesn't ship.",
     "Today my core is agentic and generative AI — multi-agent orchestration and RAG on LangGraph and the A2A protocol — backed by distributed FastAPI services, model fine-tuning (BERT, LLaMA, LoRA/PEFT), and computer vision shipped under real hardware limits, across AWS and GCP. Bring me a messy, half-formed problem and I'll turn it into a system you can trust — as the single person accountable for it, from the first call to long after go-live.",
   ],
 };
@@ -60,7 +60,7 @@ export const practices = {
     {
       heading: "I show you the numbers",
       detail:
-        "Every change has to prove it helps. I've lifted one system's accuracy from 55% to 79%, doubled another from 30% to 65%, and cut a platform's launch time by 80%. If it doesn't move a number, it doesn't ship.",
+        "Every change has to prove it helps. I've lifted one system's accuracy from 55% to 79%, doubled another from 30% to 65%, and cut a platform's container size by 80%. If it doesn't move a number, it doesn't ship.",
     },
     {
       heading: "One person, start to finish",
@@ -78,11 +78,11 @@ export const caseStudies = [
     approach:
       "I architected a production multi-agent platform on the A2A protocol — 5+ specialized agents with plain-language query routing (LangGraph + Gemini), running concurrently on a distributed async backend, over RAG pipelines on a Qdrant knowledge base. I added admin-gated tracing to control cost and data sensitivity, and role-based access for auditability.",
     impact:
-      "Non-technical staff now get answers by asking in plain language across 46+ systems and 10,000+ specs — and create and monitor their own agents with no code. Containerized delivery cut deployment time by 80%.",
+      "Non-technical staff now get answers by asking in plain language across 46+ systems and 10,000+ specs — and create and monitor their own agents with no code. Optimizing the container packages and requirements cut image size by 80%, with all operations running smoothly.",
     tags: ["Python", "A2A Protocol", "LangGraph", "RAG", "Qdrant", "FastAPI", "Angular", "Docker"],
     image: multiAgentPlatformDiagram,
     imageAlt:
-      "Architecture diagram: an access tier of plain-language queries, a no-code agent studio and an RBAC gate feeds a LangGraph and Gemini intent router over an A2A bus, which dispatches concurrently to five specialised agents for analytics, catalog and specs, documentation, vendor intelligence and compliance; these run on a distributed async backend with admin-gated tracing and audit trails, retrieving from a Qdrant vector knowledge base indexing 46+ sources and 10,000+ product specs. Results: 80% deployment reduction, zero-code self-service agents, 100% audit traceability.",
+      "Architecture diagram: an access tier of plain-language queries, a no-code agent studio and an RBAC gate feeds a LangGraph and Gemini intent router over an A2A bus, which dispatches concurrently to five specialised agents for analytics, catalog and specs, documentation, vendor intelligence and compliance; these run on a distributed async backend with admin-gated tracing and audit trails, retrieving from a Qdrant vector knowledge base indexing 46+ sources and 10,000+ product specs. Results: 80% container size reduction, zero-code self-service agents, 100% audit traceability.",
     imageWidth: 1200,
     imageHeight: 800,
   },
@@ -222,7 +222,7 @@ export const affiliates = [
       "Audit log + kill switch on every automation",
     ],
     link: "https://www.xwits.dev/products/xwcare",
-    demoLink: "https://calendly.com/xwits/30min",
+    connectLink: "https://www.xwits.dev/industries/healthcare/medical-clinics/",
   },
 ];
 

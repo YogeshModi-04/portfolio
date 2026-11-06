@@ -1,0 +1,28 @@
+# Yogesh Modi — AI/ML Architect & Consultant
+
+> Yogesh Modi (Yogesh Shivkumar Modi) is an AI/ML architect and consultant based in Ahmedabad, Gujarat, India. He takes AI systems from a rough, real-world problem to production — agentic AI, generative AI, RAG, computer vision and applied ML — with about five years of experience, owned end to end from architecture through QA to enterprise deployment. He is open to senior AI/ML architect and engineer roles and to select contracting and consulting engagements.
+
+This is a single-page portfolio. Everything below is a section of the same page.
+
+## Portfolio
+
+- [Home](https://www.yogeshmodi.in/): Introduction and positioning.
+- [About](https://www.yogeshmodi.in/#about): Background, focus areas and the outcomes he points to.
+- [Experience](https://www.yogeshmodi.in/#experience): Case studies, including the enterprise multi-agent AI platform, on-device vision accuracy for assistive smart glasses, and theft-detection activity recognition. Also lists certifications.
+- [Projects](https://www.yogeshmodi.in/#projects): SMARTON AI smart glasses, an agentic shopping assistant (LangGraph + XGBoost), a two-pass spec summarizer (Gemini), and a natural-language SQL agent (LangChain over PostgreSQL).
+- [How I work](https://www.yogeshmodi.in/#practices): The practices he applies to every engagement.
+- [Affiliations](https://www.yogeshmodi.in/#affiliates): Products he is affiliated with, such as XWCare, a clinic operating system.
+- [Testimonials](https://www.yogeshmodi.in/#testimonials): What founders and colleagues say about working with him.
+- [FAQ](https://www.yogeshmodi.in/#faq): Short answers about his work, location and availability.
+
+## Contact
+
+- [Book a 30-minute call](https://calendar.app.google/Y5nZ9xPow2h35UHg6): Schedule a Google Meet call.
+- [LinkedIn](https://www.linkedin.com/in/yogesh-shivkumar-modi/): Professional profile.
+- [GitHub](https://github.com/YogeshModi-04): Code and projects.
+- Email: skmodiyogesh@gmail.com
+
+## Optional
+
+- [Sitemap](https://www.yogeshmodi.in/sitemap.xml): Machine-readable page list.
+- [Agent resource manifest](https://www.yogeshmodi.in/.well-known/ard.json): Structured profile data for agents.

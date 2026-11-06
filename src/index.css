@@ -4,7 +4,7 @@
   --surface: #fafafa;
   --fg: #111111;
   --fg-soft: #4b4b4b;
-  --fg-faint: #8a8a8a;
+  --fg-faint: #6e6e6e; /* 5:1 on white; #8a8a8a failed WCAG AA (3.45:1) */
   --border: #1a1a1a;
   --border-soft: rgba(17, 17, 17, 0.12);
   --invert-bg: #111111;
